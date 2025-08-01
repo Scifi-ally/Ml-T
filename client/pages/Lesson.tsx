@@ -307,8 +307,8 @@ const Lesson = () => {
         </div>
       </header>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
-        <div className="grid lg:grid-cols-12 gap-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex-1 overflow-hidden">
+        <div className="grid lg:grid-cols-12 gap-6 h-full">
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-6">
             {/* Lesson Overview */}
