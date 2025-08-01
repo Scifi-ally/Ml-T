@@ -735,18 +735,20 @@ import numpy as np
               <div className="p-6 h-[520px] overflow-auto bg-gray-900">
                 <pre className="text-green-300 font-mono whitespace-pre-wrap leading-7 text-base">
                   {output ||
-                    `# 🐍 Python Console - Ready for your code!
-#
-# This is where your program output will appear.
-#
-# What you'll see here:
-# • Print statements from your code
-# • Calculation results
-# • Error messages (if any)
-#
-# 💡 Tip: Use print() to see what your variables contain!
-#
-# Click 'Run Code' to execute your program →`}
+                    `🐍 Python Console - Ready for Advanced NumPy Code!
+
+This console will show your program output including:
+• Vector analysis results
+• Mathematical calculations
+• Statistical computations
+• Error messages and debugging info
+
+💡 Pro Tips:
+• Use print() statements to debug your code
+• Check output format matches expected exactly
+• Review error messages for specific guidance
+
+Write your complete NumPy implementation and click 'Run Code' →`}
                 </pre>
               </div>
             </div>
