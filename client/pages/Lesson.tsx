@@ -456,10 +456,22 @@ const Lesson = () => {
                     {/* Practice Step */}
                     {currentStepData.type === "practice" &&
                       currentStepData.codeExample && (
-                        <div className="space-y-4">
-                          <p className="text-gray-700">
-                            {currentStepData.content}
-                          </p>
+                        <div className="space-y-6">
+                          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                            <h5 className="font-semibold text-blue-800 mb-3">📝 What You'll Build</h5>
+                            <p className="text-blue-700 text-sm leading-relaxed mb-4">
+                              {currentStepData.content}
+                            </p>
+                            <div className="bg-white p-3 rounded border border-blue-200">
+                              <h6 className="font-medium text-blue-800 text-sm mb-2">🎯 Your Task:</h6>
+                              <ul className="text-blue-700 text-sm space-y-1">
+                                <li>• Look for the blanks (___) in the code below</li>
+                                <li>• Fill them with the correct values</li>
+                                <li>• Run the code to see if your output matches the expected result</li>
+                                <li>• Use hints if you get stuck!</li>
+                              </ul>
+                            </div>
+                          </div>
                           <InteractiveCodeEnvironment
                             codeExample={currentStepData.codeExample}
                             onComplete={(success) =>
