@@ -79,7 +79,7 @@ const Index = () => {
                 size="lg"
                 className="bg-black hover:bg-gray-800 text-white font-semibold px-8 sm:px-12 py-4 sm:py-6 text-base sm:text-lg transition-all duration-200"
               >
-                <Brain className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3" />
+                <MLTIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3" />
                 Start ML Journey
               </Button>
             </Link>
