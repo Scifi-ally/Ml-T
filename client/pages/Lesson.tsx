@@ -578,7 +578,7 @@ const Lesson = () => {
           {/* Sidebar */}
           <div className="lg:col-span-4 space-y-4 overflow-y-auto h-full">
             {/* Progress Summary */}
-            <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <div className="bg-white border border-gray-200 rounded-xl p-4">
               <div className="flex items-center mb-4">
                 <Award className="w-5 h-5 text-yellow-600 mr-2" />
                 <h3 className="font-semibold text-black">Progress</h3>
