@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Brain } from "lucide-react";
+import { MLTIcon } from "@/components/ui/ml-t-icon";
 
 const Index = () => {
   const fadeInVariants = {
@@ -27,7 +27,7 @@ const Index = () => {
           <div className="flex items-center justify-center">
             <div className="flex items-center space-x-2 sm:space-x-3">
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-black rounded-lg flex items-center justify-center">
-                <Brain className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                <MLTIcon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </div>
               <span className="text-lg sm:text-xl font-bold text-black">
                 LearnForge
@@ -79,7 +79,7 @@ const Index = () => {
                 size="lg"
                 className="bg-black hover:bg-gray-800 text-white font-semibold px-8 sm:px-12 py-4 sm:py-6 text-base sm:text-lg transition-all duration-200"
               >
-                <Brain className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3" />
+                <MLTIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3" />
                 Start ML Journey
               </Button>
             </Link>
