@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface NumPyVisualizationProps {
-  operation: 'array-creation' | 'arithmetic' | 'linear-algebra' | 'statistics';
+  operation: "array-creation" | "arithmetic" | "linear-algebra" | "statistics";
 }
 
-const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) => {
+const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({
+  operation,
+}) => {
   const [step, setStep] = useState(0);
   const [autoPlay, setAutoPlay] = useState(false);
 
   useEffect(() => {
     if (autoPlay) {
       const timer = setInterval(() => {
-        setStep(prev => (prev + 1) % 4);
+        setStep((prev) => (prev + 1) % 4);
       }, 2500);
       return () => clearInterval(timer);
     }
@@ -20,15 +22,27 @@ const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) =>
 
   const renderArrayCreation = () => {
     const arrays = [
-      { code: 'np.array([170, 70, 25])', values: [170, 70, 25], label: 'Person 1' },
-      { code: 'np.array([165, 65, 30])', values: [165, 65, 30], label: 'Person 2' }
+      {
+        code: "np.array([170, 70, 25])",
+        values: [170, 70, 25],
+        label: "Person 1",
+      },
+      {
+        code: "np.array([165, 65, 30])",
+        values: [165, 65, 30],
+        label: "Person 2",
+      },
     ];
 
     return (
       <div className="space-y-6">
         <div className="text-center mb-6">
-          <h4 className="text-lg font-semibold text-gray-800 mb-2">NumPy Array Creation</h4>
-          <p className="text-gray-600 text-sm">Watch how Python lists transform into NumPy arrays</p>
+          <h4 className="text-lg font-semibold text-gray-800 mb-2">
+            NumPy Array Creation
+          </h4>
+          <p className="text-gray-600 text-sm">
+            Watch how Python lists transform into NumPy arrays
+          </p>
         </div>
 
         {arrays.map((array, index) => (
@@ -40,7 +54,9 @@ const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) =>
             className="bg-white border border-gray-200 rounded-lg p-4"
           >
             <div className="flex items-center justify-between mb-4">
-              <div className="text-sm font-medium text-gray-700">{array.label}</div>
+              <div className="text-sm font-medium text-gray-700">
+                {array.label}
+              </div>
               <div className="text-xs text-gray-500">Step {index + 1}</div>
             </div>
 
@@ -105,13 +121,17 @@ const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) =>
     const person1 = [170, 70, 25];
     const person2 = [165, 65, 30];
     const combined = person1.map((v, i) => v + person2[i]);
-    const scaled = person1.map(v => v * 0.5);
+    const scaled = person1.map((v) => v * 0.5);
 
     return (
       <div className="space-y-6">
         <div className="text-center mb-6">
-          <h4 className="text-lg font-semibold text-gray-800 mb-2">Vector Arithmetic Operations</h4>
-          <p className="text-gray-600 text-sm">Element-wise operations in action</p>
+          <h4 className="text-lg font-semibold text-gray-800 mb-2">
+            Vector Arithmetic Operations
+          </h4>
+          <p className="text-gray-600 text-sm">
+            Element-wise operations in action
+          </p>
         </div>
 
         {/* Vector Addition */}
@@ -120,8 +140,10 @@ const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) =>
           animate={{ opacity: 1, y: 0 }}
           className="bg-white border border-gray-200 rounded-lg p-4"
         >
-          <h5 className="font-medium text-gray-800 mb-4">Element-wise Addition</h5>
-          
+          <h5 className="font-medium text-gray-800 mb-4">
+            Element-wise Addition
+          </h5>
+
           <div className="space-y-4">
             {/* Visual representation */}
             <div className="flex items-center justify-center space-x-4 text-sm">
@@ -216,8 +238,10 @@ const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) =>
           transition={{ delay: 1 }}
           className="bg-white border border-gray-200 rounded-lg p-4"
         >
-          <h5 className="font-medium text-gray-800 mb-4">Scalar Multiplication</h5>
-          
+          <h5 className="font-medium text-gray-800 mb-4">
+            Scalar Multiplication
+          </h5>
+
           <div className="space-y-4">
             <div className="flex items-center justify-center space-x-4 text-sm">
               <motion.div
@@ -290,14 +314,23 @@ const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) =>
   const renderLinearAlgebra = () => {
     const person1 = [170, 70, 25];
     const person2 = [165, 65, 30];
-    const dotProduct = person1.reduce((sum, val, i) => sum + val * person2[i], 0);
-    const magnitude1 = Math.sqrt(person1.reduce((sum, val) => sum + val * val, 0));
+    const dotProduct = person1.reduce(
+      (sum, val, i) => sum + val * person2[i],
+      0,
+    );
+    const magnitude1 = Math.sqrt(
+      person1.reduce((sum, val) => sum + val * val, 0),
+    );
 
     return (
       <div className="space-y-6">
         <div className="text-center mb-6">
-          <h4 className="text-lg font-semibold text-gray-800 mb-2">Linear Algebra Operations</h4>
-          <p className="text-gray-600 text-sm">Advanced mathematical computations</p>
+          <h4 className="text-lg font-semibold text-gray-800 mb-2">
+            Linear Algebra Operations
+          </h4>
+          <p className="text-gray-600 text-sm">
+            Advanced mathematical computations
+          </p>
         </div>
 
         {/* Dot Product */}
@@ -306,8 +339,10 @@ const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) =>
           animate={{ opacity: 1, y: 0 }}
           className="bg-white border border-gray-200 rounded-lg p-4"
         >
-          <h5 className="font-medium text-gray-800 mb-4">Dot Product Calculation</h5>
-          
+          <h5 className="font-medium text-gray-800 mb-4">
+            Dot Product Calculation
+          </h5>
+
           <div className="space-y-4">
             {/* Formula */}
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -330,14 +365,20 @@ const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) =>
                     className="flex items-center justify-between bg-gray-50 p-3 rounded"
                   >
                     <div className="flex items-center space-x-2 text-sm">
-                      <div className="bg-blue-100 text-blue-800 px-2 py-1 rounded font-mono">{val1}</div>
+                      <div className="bg-blue-100 text-blue-800 px-2 py-1 rounded font-mono">
+                        {val1}
+                      </div>
                       <span>×</span>
-                      <div className="bg-red-100 text-red-800 px-2 py-1 rounded font-mono">{val2}</div>
+                      <div className="bg-red-100 text-red-800 px-2 py-1 rounded font-mono">
+                        {val2}
+                      </div>
                       <span>=</span>
-                      <div className="bg-green-100 text-green-800 px-2 py-1 rounded font-mono">{product}</div>
+                      <div className="bg-green-100 text-green-800 px-2 py-1 rounded font-mono">
+                        {product}
+                      </div>
                     </div>
                     <div className="text-xs text-gray-500">
-                      {i === 0 ? 'Height' : i === 1 ? 'Weight' : 'Age'}
+                      {i === 0 ? "Height" : i === 1 ? "Weight" : "Age"}
                     </div>
                   </motion.div>
                 );
@@ -368,8 +409,10 @@ const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) =>
           transition={{ delay: 1 }}
           className="bg-white border border-gray-200 rounded-lg p-4"
         >
-          <h5 className="font-medium text-gray-800 mb-4">Vector Magnitude (Length)</h5>
-          
+          <h5 className="font-medium text-gray-800 mb-4">
+            Vector Magnitude (Length)
+          </h5>
+
           <div className="space-y-4">
             <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
               <div className="text-sm font-mono text-center">
@@ -379,7 +422,8 @@ const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) =>
 
             <div className="bg-gray-50 p-3 rounded">
               <div className="text-sm font-mono">
-                ||person1|| = √({person1[0]}² + {person1[1]}² + {person1[2]}²) = {magnitude1.toFixed(2)}
+                ||person1|| = √({person1[0]}² + {person1[1]}² + {person1[2]}²) ={" "}
+                {magnitude1.toFixed(2)}
               </div>
             </div>
           </div>
@@ -389,15 +433,22 @@ const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) =>
   };
 
   const renderStatistics = () => {
-    const data = [[170, 70, 25], [165, 65, 30]];
+    const data = [
+      [170, 70, 25],
+      [165, 65, 30],
+    ];
     const means = [167.5, 67.5, 27.5];
     const stds = [2.5, 2.5, 2.5];
 
     return (
       <div className="space-y-6">
         <div className="text-center mb-6">
-          <h4 className="text-lg font-semibold text-gray-800 mb-2">Statistical Analysis</h4>
-          <p className="text-gray-600 text-sm">Understanding data through statistics</p>
+          <h4 className="text-lg font-semibold text-gray-800 mb-2">
+            Statistical Analysis
+          </h4>
+          <p className="text-gray-600 text-sm">
+            Understanding data through statistics
+          </p>
         </div>
 
         {/* Data visualization */}
@@ -407,45 +458,55 @@ const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) =>
           className="bg-white border border-gray-200 rounded-lg p-4"
         >
           <h5 className="font-medium text-gray-800 mb-4">Dataset Overview</h5>
-          
+
           <div className="grid grid-cols-3 gap-4">
-            {['Height (cm)', 'Weight (kg)', 'Age (years)'].map((label, colIndex) => (
-              <div key={colIndex} className="text-center">
-                <div className="text-sm font-medium text-gray-700 mb-2">{label}</div>
-                <div className="space-y-2">
-                  {data.map((person, rowIndex) => (
-                    <motion.div
-                      key={rowIndex}
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: colIndex * 0.2 + rowIndex * 0.1 }}
-                      className={`p-2 rounded text-sm font-mono ${
-                        rowIndex === 0 ? 'bg-blue-100 text-blue-800' : 'bg-red-100 text-red-800'
-                      }`}
-                    >
-                      {person[colIndex]}
-                    </motion.div>
-                  ))}
+            {["Height (cm)", "Weight (kg)", "Age (years)"].map(
+              (label, colIndex) => (
+                <div key={colIndex} className="text-center">
+                  <div className="text-sm font-medium text-gray-700 mb-2">
+                    {label}
+                  </div>
+                  <div className="space-y-2">
+                    {data.map((person, rowIndex) => (
+                      <motion.div
+                        key={rowIndex}
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: colIndex * 0.2 + rowIndex * 0.1 }}
+                        className={`p-2 rounded text-sm font-mono ${
+                          rowIndex === 0
+                            ? "bg-blue-100 text-blue-800"
+                            : "bg-red-100 text-red-800"
+                        }`}
+                      >
+                        {person[colIndex]}
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Statistics */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1 + colIndex * 0.2 }}
+                    className="mt-4 space-y-1"
+                  >
+                    <div className="bg-green-50 border border-green-200 p-2 rounded">
+                      <div className="text-xs text-green-600">Mean</div>
+                      <div className="font-mono text-green-800">
+                        {means[colIndex]}
+                      </div>
+                    </div>
+                    <div className="bg-orange-50 border border-orange-200 p-2 rounded">
+                      <div className="text-xs text-orange-600">Std Dev</div>
+                      <div className="font-mono text-orange-800">
+                        {stds[colIndex]}
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
-                
-                {/* Statistics */}
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1 + colIndex * 0.2 }}
-                  className="mt-4 space-y-1"
-                >
-                  <div className="bg-green-50 border border-green-200 p-2 rounded">
-                    <div className="text-xs text-green-600">Mean</div>
-                    <div className="font-mono text-green-800">{means[colIndex]}</div>
-                  </div>
-                  <div className="bg-orange-50 border border-orange-200 p-2 rounded">
-                    <div className="text-xs text-orange-600">Std Dev</div>
-                    <div className="font-mono text-orange-800">{stds[colIndex]}</div>
-                  </div>
-                </motion.div>
-              </div>
-            ))}
+              ),
+            )}
           </div>
         </motion.div>
 
@@ -456,11 +517,15 @@ const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) =>
           transition={{ delay: 2 }}
           className="bg-white border border-gray-200 rounded-lg p-4"
         >
-          <h5 className="font-medium text-gray-800 mb-4">Statistical Formulas</h5>
-          
+          <h5 className="font-medium text-gray-800 mb-4">
+            Statistical Formulas
+          </h5>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <div className="text-sm font-medium text-green-800 mb-2">Mean (Average)</div>
+              <div className="text-sm font-medium text-green-800 mb-2">
+                Mean (Average)
+              </div>
               <div className="font-mono text-sm text-green-700">
                 μ = (Σx) / n
               </div>
@@ -469,7 +534,9 @@ const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) =>
               </div>
             </div>
             <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-              <div className="text-sm font-medium text-orange-800 mb-2">Standard Deviation</div>
+              <div className="text-sm font-medium text-orange-800 mb-2">
+                Standard Deviation
+              </div>
               <div className="font-mono text-sm text-orange-700">
                 σ = √(Σ(x - μ)² / n)
               </div>
@@ -486,14 +553,16 @@ const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) =>
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-semibold text-gray-800">NumPy Operations Visualization</h3>
+        <h3 className="text-lg font-semibold text-gray-800">
+          NumPy Operations Visualization
+        </h3>
         <div className="flex items-center space-x-2">
           <button
             onClick={() => setAutoPlay(!autoPlay)}
             className="flex items-center space-x-2 px-3 py-2 bg-blue-100 text-blue-800 rounded-lg hover:bg-blue-200 transition-colors text-sm"
           >
-            <span>{autoPlay ? '⏸️' : '▶️'}</span>
-            <span>{autoPlay ? 'Pause' : 'Auto Play'}</span>
+            <span>{autoPlay ? "⏸️" : "▶️"}</span>
+            <span>{autoPlay ? "Pause" : "Auto Play"}</span>
           </button>
           <button
             onClick={() => setStep(0)}
@@ -504,10 +573,10 @@ const NumPyVisualization: React.FC<NumPyVisualizationProps> = ({ operation }) =>
         </div>
       </div>
 
-      {operation === 'array-creation' && renderArrayCreation()}
-      {operation === 'arithmetic' && renderArithmetic()}
-      {operation === 'linear-algebra' && renderLinearAlgebra()}
-      {operation === 'statistics' && renderStatistics()}
+      {operation === "array-creation" && renderArrayCreation()}
+      {operation === "arithmetic" && renderArithmetic()}
+      {operation === "linear-algebra" && renderLinearAlgebra()}
+      {operation === "statistics" && renderStatistics()}
     </div>
   );
 };

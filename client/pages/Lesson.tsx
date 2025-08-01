@@ -414,49 +414,69 @@ const Lesson = () => {
                         </div>
 
                         {/* Add visual components based on step content */}
-                        {currentStepData.title.includes("Mathematical Foundations") && (
+                        {currentStepData.title.includes(
+                          "Mathematical Foundations",
+                        ) && (
                           <div className="space-y-6">
                             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                              <h5 className="font-medium text-blue-800 mb-3">🎯 Interactive Vector Space</h5>
+                              <h5 className="font-medium text-blue-800 mb-3">
+                                🎯 Interactive Vector Space
+                              </h5>
                               <VectorSpaceVisualization concept="vector-space" />
                             </div>
 
                             <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                              <h5 className="font-medium text-green-800 mb-3">📊 Linear Independence Demo</h5>
+                              <h5 className="font-medium text-green-800 mb-3">
+                                📊 Linear Independence Demo
+                              </h5>
                               <VectorSpaceVisualization concept="linear-independence" />
                             </div>
 
                             <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                              <h5 className="font-medium text-purple-800 mb-3">⚡ Vector Operations</h5>
+                              <h5 className="font-medium text-purple-800 mb-3">
+                                ⚡ Vector Operations
+                              </h5>
                               <VectorSpaceVisualization concept="vector-operations" />
                             </div>
 
                             <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-                              <h5 className="font-medium text-orange-800 mb-3">🧮 Vector Space Axioms</h5>
+                              <h5 className="font-medium text-orange-800 mb-3">
+                                🧮 Vector Space Axioms
+                              </h5>
                               <VectorSpaceVisualization concept="axioms" />
                             </div>
                           </div>
                         )}
 
-                        {currentStepData.title.includes("NumPy Implementation") && (
+                        {currentStepData.title.includes(
+                          "NumPy Implementation",
+                        ) && (
                           <div className="space-y-6">
                             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                              <h5 className="font-medium text-blue-800 mb-3">🏗️ Array Creation</h5>
+                              <h5 className="font-medium text-blue-800 mb-3">
+                                🏗️ Array Creation
+                              </h5>
                               <NumPyVisualization operation="array-creation" />
                             </div>
 
                             <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                              <h5 className="font-medium text-green-800 mb-3">➕ Arithmetic Operations</h5>
+                              <h5 className="font-medium text-green-800 mb-3">
+                                ➕ Arithmetic Operations
+                              </h5>
                               <NumPyVisualization operation="arithmetic" />
                             </div>
 
                             <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                              <h5 className="font-medium text-purple-800 mb-3">🧮 Linear Algebra</h5>
+                              <h5 className="font-medium text-purple-800 mb-3">
+                                🧮 Linear Algebra
+                              </h5>
                               <NumPyVisualization operation="linear-algebra" />
                             </div>
 
                             <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-                              <h5 className="font-medium text-orange-800 mb-3">📊 Statistics</h5>
+                              <h5 className="font-medium text-orange-800 mb-3">
+                                📊 Statistics
+                              </h5>
                               <NumPyVisualization operation="statistics" />
                             </div>
                           </div>
@@ -511,52 +531,78 @@ const Lesson = () => {
                       currentStepData.codeExample && (
                         <div className="space-y-6">
                           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                            <h5 className="font-semibold text-blue-800 mb-3">📝 What You'll Build</h5>
+                            <h5 className="font-semibold text-blue-800 mb-3">
+                              📝 What You'll Build
+                            </h5>
                             <p className="text-blue-700 text-sm leading-relaxed mb-4 whitespace-pre-line">
                               {currentStepData.content}
                             </p>
                             <div className="bg-white p-3 rounded border border-blue-200">
-                              <h6 className="font-medium text-blue-800 text-sm mb-2">🎯 Your Task:</h6>
+                              <h6 className="font-medium text-blue-800 text-sm mb-2">
+                                🎯 Your Task:
+                              </h6>
                               <ul className="text-blue-700 text-sm space-y-1">
-                                <li>• Write complete NumPy implementation from scratch</li>
-                                <li>• Use all the theoretical knowledge you've learned</li>
-                                <li>• Implement every required operation independently</li>
-                                <li>• Produce exact output matching the expected format</li>
+                                <li>
+                                  • Write complete NumPy implementation from
+                                  scratch
+                                </li>
+                                <li>
+                                  • Use all the theoretical knowledge you've
+                                  learned
+                                </li>
+                                <li>
+                                  • Implement every required operation
+                                  independently
+                                </li>
+                                <li>
+                                  • Produce exact output matching the expected
+                                  format
+                                </li>
                               </ul>
                             </div>
                           </div>
 
                           {/* Visual Concept Explorer */}
                           <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                            <h5 className="font-semibold text-purple-800 mb-3">🎯 Interactive Concept Review</h5>
+                            <h5 className="font-semibold text-purple-800 mb-3">
+                              🎯 Interactive Concept Review
+                            </h5>
                             <ConceptExplorer
                               concepts={[
                                 {
                                   title: "Array Creation",
-                                  description: "NumPy arrays are the foundation of all operations. They store numerical data in a structured format that enables efficient mathematical computations.",
-                                  example: "Used in ML to represent feature vectors - each person's height, weight, and age forms a vector that algorithms can process.",
+                                  description:
+                                    "NumPy arrays are the foundation of all operations. They store numerical data in a structured format that enables efficient mathematical computations.",
+                                  example:
+                                    "Used in ML to represent feature vectors - each person's height, weight, and age forms a vector that algorithms can process.",
                                   visualization: "array",
-                                  data: { values: [170, 70, 25] }
+                                  data: { values: [170, 70, 25] },
                                 },
                                 {
                                   title: "Vector Addition",
-                                  description: "Element-wise addition combines corresponding elements from two vectors. This operation is fundamental in machine learning for combining features and data points.",
-                                  example: "Combining feature vectors in ensemble methods or adding bias terms in neural networks.",
-                                  visualization: "operation"
+                                  description:
+                                    "Element-wise addition combines corresponding elements from two vectors. This operation is fundamental in machine learning for combining features and data points.",
+                                  example:
+                                    "Combining feature vectors in ensemble methods or adding bias terms in neural networks.",
+                                  visualization: "operation",
                                 },
                                 {
                                   title: "Linear Algebra",
-                                  description: "Operations like dot products and norms measure relationships between vectors and their geometric properties in high-dimensional space.",
-                                  example: "Similarity calculations in recommendation systems use dot products to find users with similar preferences.",
-                                  visualization: "formula"
+                                  description:
+                                    "Operations like dot products and norms measure relationships between vectors and their geometric properties in high-dimensional space.",
+                                  example:
+                                    "Similarity calculations in recommendation systems use dot products to find users with similar preferences.",
+                                  visualization: "formula",
                                 },
                                 {
                                   title: "Statistical Analysis",
-                                  description: "Computing means, standard deviations, and other statistics helps understand data distribution and prepare it for machine learning algorithms.",
-                                  example: "Feature normalization using mean and standard deviation ensures all features contribute equally to model training.",
+                                  description:
+                                    "Computing means, standard deviations, and other statistics helps understand data distribution and prepare it for machine learning algorithms.",
+                                  example:
+                                    "Feature normalization using mean and standard deviation ensures all features contribute equally to model training.",
                                   visualization: "array",
-                                  data: { values: [167.5, 67.5, 27.5] }
-                                }
+                                  data: { values: [167.5, 67.5, 27.5] },
+                                },
                               ]}
                             />
                           </div>
@@ -675,18 +721,26 @@ const Lesson = () => {
             {/* Key Concepts */}
             {lesson.theoreticalFoundations && (
               <div className="bg-white border border-gray-200 rounded-lg p-3">
-                <h4 className="font-medium text-black mb-2 text-sm">Key Concepts</h4>
+                <h4 className="font-medium text-black mb-2 text-sm">
+                  Key Concepts
+                </h4>
                 {lesson.theoreticalFoundations.keyTheorems && (
                   <div className="space-y-1">
-                    {lesson.theoreticalFoundations.keyTheorems.slice(0, 5).map(
-                      (theorem, index) => (
-                        <div key={index} className="text-xs text-gray-600 leading-tight">
+                    {lesson.theoreticalFoundations.keyTheorems
+                      .slice(0, 5)
+                      .map((theorem, index) => (
+                        <div
+                          key={index}
+                          className="text-xs text-gray-600 leading-tight"
+                        >
                           • {theorem}
                         </div>
-                      ),
-                    )}
+                      ))}
                     {lesson.theoreticalFoundations.keyTheorems.length > 5 && (
-                      <div className="text-xs text-gray-500">+{lesson.theoreticalFoundations.keyTheorems.length - 5} more</div>
+                      <div className="text-xs text-gray-500">
+                        +{lesson.theoreticalFoundations.keyTheorems.length - 5}{" "}
+                        more
+                      </div>
                     )}
                   </div>
                 )}

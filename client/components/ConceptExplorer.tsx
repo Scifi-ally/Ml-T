@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface ConceptExplorerProps {
   concepts: Array<{
     title: string;
     description: string;
     example: string;
-    visualization: 'array' | 'operation' | 'formula';
+    visualization: "array" | "operation" | "formula";
     data?: any;
   }>;
 }
@@ -16,7 +16,7 @@ const ConceptExplorer: React.FC<ConceptExplorerProps> = ({ concepts }) => {
 
   const renderVisualization = (type: string, data: any) => {
     switch (type) {
-      case 'array':
+      case "array":
         return (
           <div className="flex items-center justify-center space-x-2 p-4">
             <span className="text-gray-400 text-xl">[</span>
@@ -25,27 +25,28 @@ const ConceptExplorer: React.FC<ConceptExplorerProps> = ({ concepts }) => {
                 key={i}
                 initial={{ scale: 0, rotateY: 180 }}
                 animate={{ scale: 1, rotateY: 0 }}
-                transition={{ delay: i * 0.1, type: 'spring' }}
+                transition={{ delay: i * 0.1, type: "spring" }}
                 className="bg-blue-100 text-blue-800 px-3 py-2 rounded-lg font-mono font-bold text-lg shadow-md"
               >
                 {value}
               </motion.div>
-            )) || [170, 70, 25].map((value, i) => (
-              <motion.div
-                key={i}
-                initial={{ scale: 0, rotateY: 180 }}
-                animate={{ scale: 1, rotateY: 0 }}
-                transition={{ delay: i * 0.1, type: 'spring' }}
-                className="bg-blue-100 text-blue-800 px-3 py-2 rounded-lg font-mono font-bold text-lg shadow-md"
-              >
-                {value}
-              </motion.div>
-            ))}
+            )) ||
+              [170, 70, 25].map((value, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ scale: 0, rotateY: 180 }}
+                  animate={{ scale: 1, rotateY: 0 }}
+                  transition={{ delay: i * 0.1, type: "spring" }}
+                  className="bg-blue-100 text-blue-800 px-3 py-2 rounded-lg font-mono font-bold text-lg shadow-md"
+                >
+                  {value}
+                </motion.div>
+              ))}
             <span className="text-gray-400 text-xl">]</span>
           </div>
         );
-      
-      case 'operation':
+
+      case "operation":
         return (
           <div className="p-4">
             <div className="flex items-center justify-center space-x-4 mb-4">
@@ -65,20 +66,22 @@ const ConceptExplorer: React.FC<ConceptExplorerProps> = ({ concepts }) => {
             </div>
           </div>
         );
-      
-      case 'formula':
+
+      case "formula":
         return (
           <div className="p-6 bg-gray-900 text-green-400 rounded-lg font-mono">
             <div className="text-center space-y-2">
               <div className="text-lg">import numpy as np</div>
               <div className="text-lg">person1 = np.array([170, 70, 25])</div>
               <div className="text-lg">person2 = np.array([165, 65, 30])</div>
-              <div className="text-lg text-yellow-400">combined = person1 + person2</div>
+              <div className="text-lg text-yellow-400">
+                combined = person1 + person2
+              </div>
               <div className="text-lg text-blue-400">print(combined)</div>
             </div>
           </div>
         );
-      
+
       default:
         return null;
     }
@@ -94,8 +97,8 @@ const ConceptExplorer: React.FC<ConceptExplorerProps> = ({ concepts }) => {
             onClick={() => setActiveConcept(index)}
             className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
               activeConcept === index
-                ? 'bg-blue-50 text-blue-800 border-b-2 border-blue-500'
-                : 'text-gray-600 hover:text-gray-800 hover:bg-gray-50'
+                ? "bg-blue-50 text-blue-800 border-b-2 border-blue-500"
+                : "text-gray-600 hover:text-gray-800 hover:bg-gray-50"
             }`}
           >
             {concept.title}
@@ -128,7 +131,7 @@ const ConceptExplorer: React.FC<ConceptExplorerProps> = ({ concepts }) => {
             <div className="bg-gray-50 border border-gray-200 rounded-lg">
               {renderVisualization(
                 concepts[activeConcept].visualization,
-                concepts[activeConcept].data
+                concepts[activeConcept].data,
               )}
             </div>
 

@@ -172,7 +172,7 @@ class DataService {
                 "Eigenvalue Decomposition: A = QΛQ^(-1) for diagonalizable matrices",
                 "Frobenius Norm: ||A||_F = sqrt(sum of squares of all elements)",
                 "Broadcasting Rules: How NumPy handles different shaped arrays",
-                "Matrix Condition Number: Ratio of largest to smallest singular value"
+                "Matrix Condition Number: Ratio of largest to smallest singular value",
               ],
               realWorldConnections: [
                 "Netflix uses SVD on rating matrices for recommendations",
@@ -182,8 +182,8 @@ class DataService {
                 "Linear regression in finance uses matrix operations",
                 "Computer graphics uses matrix transformations",
                 "Signal processing uses Fourier transforms with NumPy",
-                "Quantum computing simulations use complex vector spaces"
-              ]
+                "Quantum computing simulations use complex vector spaces",
+              ],
             },
             spacedRepetition: {
               nextReview: new Date(Date.now() + 24 * 60 * 60 * 1000), // Next day
@@ -349,7 +349,8 @@ Your program must produce the exact expected output format with correct numerica
                 codeExample: {
                   id: "complete-numpy-implementation",
                   title: "Complete NumPy Vector Analysis",
-                  description: "Write complete program from scratch - no templates provided",
+                  description:
+                    "Write complete program from scratch - no templates provided",
                   code: `# Write your complete NumPy vector analysis program here
 # Implement all required functionality from scratch
 # Use your theoretical knowledge to build this professionally
