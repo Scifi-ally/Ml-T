@@ -194,29 +194,14 @@ class DataService {
                   title: "My First Vector Program",
                   description:
                     "Fill in the missing code to create vectors and perform operations",
-                  code: `# Step 1: Import the NumPy library
-# NumPy is like a powerful calculator for lists of numbers
-# The "as np" part means we can write "np" instead of "numpy" every time
-import numpy as np
+                  code: `import numpy as np
 
-# Step 2: Create your first vector (person1)
-# This represents: [height in cm, weight in kg, age in years]
-# Fill in the missing code - create a person who is 170cm tall, 70kg, 25 years old
 person1 = np.array([___, ___, ___])
-
-# Step 3: Create your second vector (person2)
-# This person is 165cm tall, 65kg, 30 years old
 person2 = np.array([___, ___, ___])
 
-# Step 4: Add the vectors together
-# When we add [170,70,25] + [165,65,30], we get [170+165, 70+65, 25+30]
-# Fill in the missing variable name:
 combined = ___ + ___
 print("Combined features:", combined)
 
-# Step 5: Scale person1 by half (multiply by 0.5)
-# This gives us [170*0.5, 70*0.5, 25*0.5] = [85, 35, 12.5]
-# Fill in the missing code:
 scaled = ___ * person1
 print("Scaled features:", scaled)`,
                   expectedOutput:
