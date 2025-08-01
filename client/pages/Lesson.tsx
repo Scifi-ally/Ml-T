@@ -397,7 +397,7 @@ const Lesson = () => {
                 </div>
 
                 {currentStepData && (
-                  <div className="p-6">
+                  <div className="p-4">
                     <div className="mb-4">
                       <h4 className="text-lg font-semibold text-black mb-2">
                         {currentStepData.title}
