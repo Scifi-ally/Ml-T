@@ -606,42 +606,22 @@ const Lesson = () => {
               </div>
             )}
 
-            {/* Theory Foundations */}
+            {/* Key Concepts */}
             {lesson.theoreticalFoundations && (
-              <div className="bg-white border border-gray-200 rounded-xl p-4">
-                <h3 className="font-semibold text-black mb-4">Key Concepts</h3>
-
+              <div className="bg-white border border-gray-200 rounded-lg p-3">
+                <h4 className="font-medium text-black mb-2 text-sm">Concepts</h4>
                 {lesson.theoreticalFoundations.keyTheorems && (
-                  <div className="mb-4">
-                    <h4 className="text-sm font-medium text-gray-900 mb-2">
-                      Key Theorems
-                    </h4>
-                    <ul className="space-y-1">
-                      {lesson.theoreticalFoundations.keyTheorems.map(
-                        (theorem, index) => (
-                          <li key={index} className="text-xs text-gray-600">
-                            • {theorem}
-                          </li>
-                        ),
-                      )}
-                    </ul>
-                  </div>
-                )}
-
-                {lesson.theoreticalFoundations.realWorldConnections && (
-                  <div className="mb-4">
-                    <h4 className="text-sm font-medium text-gray-900 mb-2">
-                      Real-World Applications
-                    </h4>
-                    <ul className="space-y-1">
-                      {lesson.theoreticalFoundations.realWorldConnections.map(
-                        (connection, index) => (
-                          <li key={index} className="text-xs text-gray-600">
-                            • {connection}
-                          </li>
-                        ),
-                      )}
-                    </ul>
+                  <div className="space-y-1">
+                    {lesson.theoreticalFoundations.keyTheorems.slice(0, 3).map(
+                      (theorem, index) => (
+                        <div key={index} className="text-xs text-gray-600 leading-tight">
+                          • {theorem.length > 30 ? theorem.substring(0, 30) + '...' : theorem}
+                        </div>
+                      ),
+                    )}
+                    {lesson.theoreticalFoundations.keyTheorems.length > 3 && (
+                      <div className="text-xs text-gray-500">+{lesson.theoreticalFoundations.keyTheorems.length - 3} more</div>
+                    )}
                   </div>
                 )}
               </div>
