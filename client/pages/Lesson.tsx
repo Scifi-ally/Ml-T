@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import VectorSpaceVisualization from "@/components/VectorSpaceVisualization";
 import NumPyVisualization from "@/components/NumPyVisualization";
+import ConceptExplorer from "@/components/ConceptExplorer";
 
 import {
   ChevronLeft,
