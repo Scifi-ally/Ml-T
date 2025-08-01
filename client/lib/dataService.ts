@@ -194,48 +194,184 @@ class DataService {
               {
                 id: "step-1",
                 type: "theory",
-                title: "What is a Vector? (Starting from Zero)",
-                content:
-                  "🎯 Let's start with the absolute basics! A vector is just a list of numbers - that's it! Imagine you're describing a person. You might say: Height = 170cm, Weight = 70kg, Age = 25 years. In math, we write this as [170, 70, 25]. This is a vector! Each number in the list tells us something different about the person. In machine learning, these numbers are called 'features' - they're the characteristics we use to describe things. For example: A house might be [3, 2, 1500] meaning 3 bedrooms, 2 bathrooms, 1500 square feet. A car might be [2020, 4, 25000] meaning year 2020, 4 doors, $25,000 price. The beautiful thing is that once we have these number lists (vectors), we can do math with them to find patterns, make predictions, and understand our data better!",
+                title: "Mathematical Foundations: Vector Space Theory",
+                content: `🧠 **DEEP MATHEMATICAL FOUNDATIONS OF VECTOR SPACES**
+
+📐 **What is a Vector Space? (Mathematical Rigor)**
+A vector space V over a field F is a set equipped with two operations satisfying eight fundamental axioms. Understanding these axioms is crucial for machine learning:
+
+**The Eight Axioms (Why Each Matters in ML):**
+
+1. **Associativity of addition**: (u + v) + w = u + (v + w)
+   → ML Application: Allows efficient parallel computation of feature combinations in distributed systems
+
+2. **Commutativity of addition**: u + v = v + u
+   → ML Application: Order doesn't matter when combining features (essential for bag-of-words models)
+
+3. **Identity element**: ∃ 0 ∈ V such that v + 0 = v
+   → ML Application: Zero vector represents absence of features (sparse data representation)
+
+4. **Inverse elements**: ∀v ∈ V, ∃(-v) such that v + (-v) = 0
+   → ML Application: Can subtract features, undo transformations (data preprocessing)
+
+5. **Distributivity (scalar over vector)**: a(u + v) = au + av
+   → ML Application: Scaling combined features = combining scaled features (normalization)
+
+6. **Distributivity (vector over scalar)**: (a + b)v = av + bv
+   → ML Application: Multiple scaling factors can be applied separately (ensemble methods)
+
+7. **Associativity of scalar multiplication**: a(bv) = (ab)v
+   → ML Application: Chaining transformations (like in deep neural networks)
+
+8. **Identity of scalar multiplication**: 1v = v
+   → ML Application: Identity transformation preserves data (important for debugging)
+
+🔬 **Why Vector Spaces are EVERYTHING in Machine Learning:**
+• Every dataset = collection of vectors in high-dimensional space
+• Features = dimensions of the vector space
+• ML algorithms = finding patterns in vector space geometry
+• Neural networks = learning non-linear mappings between vector spaces
+• Dimensionality reduction = projecting to lower-dimensional subspaces
+• Clustering = finding dense regions in vector space
+• Classification = finding decision boundaries that separate vector regions
+
+📊 **Linear Independence - The Foundation of Data Understanding:**
+Vectors v₁, v₂, ..., vₙ are linearly independent if:
+c₁v₁ + c₂v₂ + ... + cₙvₙ = 0 only when all cᵢ = 0
+
+**Critical ML Implications:**
+• Independent features provide unique information
+• Dependent features are redundant (multicollinearity)
+• Rank of data matrix = number of truly independent features
+• PCA finds the most important independent directions
+• Feature selection removes dependent/redundant features`,
               },
               {
                 id: "step-2",
-                type: "example",
-                title: "Real-World Example: Describing People with Vectors",
-                content:
-                  "📊 Let's use a real example you can relate to! Imagine we're collecting data about people for a health study. For each person, we measure three things: 1) Height in centimeters (like 170), 2) Weight in kilograms (like 70), 3) Age in years (like 25). So person #1 might be [170, 70, 25] and person #2 might be [165, 65, 30]. Now here's the cool part: we can compare people by comparing their vectors! If two people have similar vectors like [170, 70, 25] and [172, 72, 26], they're probably similar people. If vectors are very different like [170, 70, 25] and [190, 90, 45], they're quite different. This is exactly how dating apps, recommendation systems, and medical diagnosis tools work - they compare your 'vector' with others to find matches or make predictions!",
+                type: "theory",
+                title: "Complete NumPy Implementation Knowledge",
+                content: `🔬 **COMPLETE NUMPY IMPLEMENTATION MASTERY**
+
+Before you write any code, you must understand EXACTLY how to implement every NumPy operation. This knowledge will enable you to write complete programs from scratch.
+
+📚 **Array Creation Mastery:**
+• **np.array([values])** - Creates array from Python list
+  Example context: np.array([170, 70, 25]) creates person vector
+• **Data types automatically inferred** - integers stay int, floats stay float
+• **Shape determined by input** - [170, 70, 25] becomes shape (3,)
+
+⚡ **Essential Arithmetic Operations:**
+• **Element-wise addition**: When you add two arrays of same shape, each corresponding element is added
+  Mathematical principle: [a, b, c] + [d, e, f] = [a+d, b+e, c+f]
+• **Scalar multiplication**: Multiplying array by single number scales all elements
+  Mathematical principle: k * [a, b, c] = [k*a, k*b, k*c]
+
+🧮 **Linear Algebra Operations You Must Know:**
+• **Vector magnitude/norm**: np.linalg.norm(vector) calculates √(x₁² + x₂² + ... + xₙ²)
+  Physical meaning: Length of vector in n-dimensional space
+• **Dot product**: np.dot(v1, v2) computes v₁·v₂ = x₁y₁ + x₂y₂ + ... + xₙyₙ
+  Geometric meaning: Measures how aligned two vectors are
+• **Distance calculation**: np.linalg.norm(v1 - v2) gives Euclidean distance
+  Physical meaning: Straight-line distance between two points
+
+📊 **Statistical Analysis Functions:**
+• **Mean calculation**: np.mean(data) or data.mean() computes average
+• **Standard deviation**: np.std(data) measures how spread out values are
+• **Working with multiple vectors**: Use np.vstack([v1, v2]) to stack vertically
+
+🎯 **Vector Normalization Concept:**
+• **Unit vector creation**: vector / np.linalg.norm(vector)
+• **Purpose**: Creates vector with magnitude 1 pointing in same direction
+• **ML application**: Feature normalization for neural networks
+
+💻 **Program Structure Requirements:**
+1. **Import statement**: Always start with numpy import
+2. **Data representation**: Use appropriate array creation
+3. **Operations sequence**: Logical flow from creation to analysis
+4. **Output formatting**: Clear labels for each result
+5. **Mathematical correctness**: Each operation must produce valid results
+
+🧠 **Key Implementation Principles:**
+• **No magic numbers**: Each value should have clear meaning
+• **Meaningful variable names**: person1, person2, combined, scaled, etc.
+• **Print statements**: Each calculation should be displayed with description
+• **Mathematical accuracy**: Results must match expected mathematical outcomes
+
+You now have complete theoretical knowledge to implement any NumPy vector analysis program!`,
               },
               {
                 id: "step-3",
                 type: "practice",
-                title: "Your First Vector Program: Step by Step",
-                content:
-                  "🚀 Now YOU get to write code! We'll build this together, step by step. Don't worry if you've never programmed before - I'll explain every single line. You'll create two people as vectors, add them together (which gives us their combined totals), and scale one person by half (like reducing them to 50%). Follow the instructions in the code template below:",
+                title: "Complete NumPy Implementation From Scratch",
+                content: `🚀 **IMPLEMENTATION CHALLENGE: WRITE COMPLETE CODE FROM SCRATCH**
+
+Using your comprehensive NumPy knowledge, implement a complete vector analysis program. No templates, no guided steps - demonstrate your mastery!
+
+📋 **Your Mission:**
+Create a professional-grade vector analysis program that showcases advanced NumPy operations.
+
+🎯 **Required Functionality (Implement All):**
+1. **Vector Creation**: Create two person vectors representing [height, weight, age]
+2. **Basic Operations**: Perform element-wise addition and scalar multiplication
+3. **Distance Analysis**: Calculate Euclidean distance between vectors
+4. **Geometric Operations**: Compute dot product and vector magnitudes
+5. **Statistical Analysis**: Calculate means and standard deviations
+6. **Normalization**: Convert vector to unit vector
+
+📊 **Expected Data:**
+- Person 1: 170cm height, 70kg weight, 25 years age
+- Person 2: 165cm height, 65kg weight, 30 years age
+
+💻 **Technical Requirements:**
+• Use proper NumPy import
+• Create arrays with correct data
+• Implement all mathematical operations
+• Display results with descriptive labels
+• Follow Python coding conventions
+• Produce exact numerical output
+
+🧠 **This Tests Your Mastery Of:**
+• NumPy array creation and manipulation
+• Mathematical operations implementation
+• Linear algebra function usage
+• Statistical computation skills
+• Professional code organization
+• Problem-solving without guidance
+
+⚡ **Success Criteria:**
+Your program must produce the exact expected output format with correct numerical values. Every operation must be implemented correctly using appropriate NumPy functions.
+
+✍️ **WRITE YOUR COMPLETE IMPLEMENTATION NOW - NO TEMPLATES PROVIDED!**`,
                 codeExample: {
-                  id: "vectors-basic",
-                  title: "My First Vector Program",
-                  description:
-                    "Fill in the missing code to create vectors and perform operations",
-                  code: `import numpy as np
+                  id: "complete-numpy-implementation",
+                  title: "Complete NumPy Vector Analysis",
+                  description: "Write complete program from scratch - no templates provided",
+                  code: `# Write your complete NumPy vector analysis program here
+# Implement all required functionality from scratch
+# Use your theoretical knowledge to build this professionally
 
-person1 = np.array([___, ___, ___])
-person2 = np.array([___, ___, ___])
-
-combined = ___ + ___
-print("Combined features:", combined)
-
-scaled = ___ * person1
-print("Scaled features:", scaled)`,
-                  expectedOutput:
-                    "Combined features: [335 135  55]\nScaled features: [85.  35.  12.5]",
-                  concept: "Vector Operations",
-                  difficulty: "beginner",
+`,
+                  expectedOutput: `Vector Analysis Results:
+Person 1: [170  70  25]
+Person 2: [165  65  30]
+Combined (element-wise addition): [335 135  55]
+Scaled Person 1 (50%): [ 85.   35.   12.5]
+Distance between persons: 7.07
+Dot product: 24275
+Person 1 magnitude: 185.27
+Statistics - Mean: [167.5  67.5  27.5]
+Statistics - Standard deviation: [  2.5   2.5   2.5]
+Normalized Person 1: [0.918 0.378 0.135]`,
+                  concept: "Complete NumPy Implementation",
+                  difficulty: "intermediate",
                   hints: [
-                    "🔵 For person1: use the numbers 170, 70, 25 in that order",
-                    "🟢 For person2: use the numbers 165, 65, 30 in that order",
-                    "🟡 For addition: person1 + person2 (just like regular math!)",
-                    "🟠 For scaling: 0.5 * person1 (multiply by 0.5 to get half)",
-                    "💡 Remember: Python is picky about spelling - 'person1' not 'Person1'",
+                    "Start with proper NumPy import",
+                    "Create arrays for both persons with correct data",
+                    "Implement each operation step by step",
+                    "Use descriptive variable names",
+                    "Add print statements with labels",
+                    "Follow the expected output format exactly",
+                    "Test each operation individually if needed",
                   ],
                 },
               },
