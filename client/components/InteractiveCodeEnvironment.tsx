@@ -709,8 +709,8 @@ import numpy as np
               }`}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
-                    <Terminal className="w-5 h-5 text-gray-400 mr-3" />
-                    <span className="text-gray-300 font-medium">
+                    <Terminal className={`w-5 h-5 mr-3 ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'}`} />
+                    <span className={`font-medium ${isDarkTheme ? 'text-gray-300' : 'text-gray-800'}`}>
                       Console Output
                     </span>
                   </div>
