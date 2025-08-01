@@ -697,8 +697,16 @@ import numpy as np
         <TabsContent value="output" className="p-4">
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 h-[600px]">
             {/* Console Output */}
-            <div className="bg-gray-900 rounded-lg overflow-hidden shadow-xl border border-gray-700">
-              <div className="bg-gray-800 px-6 py-3 border-b border-gray-700">
+            <div className={`rounded-lg overflow-hidden shadow-xl border ${
+              isDarkTheme
+                ? 'bg-gray-900 border-gray-700'
+                : 'bg-white border-gray-300'
+            }`}>
+              <div className={`px-6 py-3 border-b ${
+                isDarkTheme
+                  ? 'bg-gray-800 border-gray-700'
+                  : 'bg-gray-100 border-gray-200'
+              }`}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <Terminal className="w-5 h-5 text-gray-400 mr-3" />
