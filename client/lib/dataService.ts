@@ -195,38 +195,38 @@ class DataService {
                 id: "step-1",
                 type: "theory",
                 title: "Mathematical Foundations: Vector Space Theory",
-                content: `🧠 **DEEP MATHEMATICAL FOUNDATIONS OF VECTOR SPACES**
+                content: `🧠 DEEP MATHEMATICAL FOUNDATIONS OF VECTOR SPACES
 
-📐 **What is a Vector Space? (Mathematical Rigor)**
+📐 What is a Vector Space? (Mathematical Rigor)
 A vector space V over a field F is a set equipped with two operations satisfying eight fundamental axioms. Understanding these axioms is crucial for machine learning:
 
-**The Eight Axioms (Why Each Matters in ML):**
+The Eight Axioms (Why Each Matters in ML):
 
-1. **Associativity of addition**: (u + v) + w = u + (v + w)
+1. Associativity of addition: (u + v) + w = u + (v + w)
    → ML Application: Allows efficient parallel computation of feature combinations in distributed systems
 
-2. **Commutativity of addition**: u + v = v + u
+2. Commutativity of addition: u + v = v + u
    → ML Application: Order doesn't matter when combining features (essential for bag-of-words models)
 
-3. **Identity element**: ∃ 0 ∈ V such that v + 0 = v
+3. Identity element: ∃ 0 ∈ V such that v + 0 = v
    → ML Application: Zero vector represents absence of features (sparse data representation)
 
-4. **Inverse elements**: ∀v ∈ V, ∃(-v) such that v + (-v) = 0
+4. Inverse elements: ∀v ∈ V, ∃(-v) such that v + (-v) = 0
    → ML Application: Can subtract features, undo transformations (data preprocessing)
 
-5. **Distributivity (scalar over vector)**: a(u + v) = au + av
+5. Distributivity (scalar over vector): a(u + v) = au + av
    → ML Application: Scaling combined features = combining scaled features (normalization)
 
-6. **Distributivity (vector over scalar)**: (a + b)v = av + bv
+6. Distributivity (vector over scalar): (a + b)v = av + bv
    → ML Application: Multiple scaling factors can be applied separately (ensemble methods)
 
-7. **Associativity of scalar multiplication**: a(bv) = (ab)v
+7. Associativity of scalar multiplication: a(bv) = (ab)v
    → ML Application: Chaining transformations (like in deep neural networks)
 
-8. **Identity of scalar multiplication**: 1v = v
+8. Identity of scalar multiplication: 1v = v
    → ML Application: Identity transformation preserves data (important for debugging)
 
-🔬 **Why Vector Spaces are EVERYTHING in Machine Learning:**
+🔬 Why Vector Spaces are EVERYTHING in Machine Learning:
 • Every dataset = collection of vectors in high-dimensional space
 • Features = dimensions of the vector space
 • ML algorithms = finding patterns in vector space geometry
@@ -235,11 +235,11 @@ A vector space V over a field F is a set equipped with two operations satisfying
 • Clustering = finding dense regions in vector space
 • Classification = finding decision boundaries that separate vector regions
 
-📊 **Linear Independence - The Foundation of Data Understanding:**
+📊 Linear Independence - The Foundation of Data Understanding:
 Vectors v₁, v₂, ..., vₙ are linearly independent if:
 c₁v₁ + c₂v₂ + ... + cₙvₙ = 0 only when all cᵢ = 0
 
-**Critical ML Implications:**
+Critical ML Implications:
 • Independent features provide unique information
 • Dependent features are redundant (multicollinearity)
 • Rank of data matrix = number of truly independent features
@@ -3524,7 +3524,7 @@ print(f"Neuron output: {output:.4f}")`,
             title:
               "Convolutional Neural Networks: The Brain Behind Computer Vision",
             content:
-              "🧠 Convolutional Neural Networks (CNNs) are the 'brain' that powers most modern computer vision applications! CNNs are inspired by how the human visual system works - just like your brain has different areas that specialize in detecting edges, shapes, and complex objects, CNNs have layers that detect increasingly complex features. The first layers detect simple edges and lines, middle layers combine these to find shapes like circles and rectangles, and deeper layers recognize complex objects like faces, cars, and animals. The 'convolutional' part refers to the filtering operations we learned earlier - CNNs automatically learn the best filters for each task! Instead of hand-designing filters, we let the network learn them from thousands of example images. CNNs have revolutionized computer vision because they can: automatically learn hierarchical features, handle images of different sizes, be translation-invariant (recognize objects anywhere in the image), and achieve superhuman performance on many visual tasks. Famous CNN architectures include LeNet (the pioneer), AlexNet (the breakthrough), VGG (simple and effective), ResNet (super deep networks), and EfficientNet (optimized for mobile).",
+              "�� Convolutional Neural Networks (CNNs) are the 'brain' that powers most modern computer vision applications! CNNs are inspired by how the human visual system works - just like your brain has different areas that specialize in detecting edges, shapes, and complex objects, CNNs have layers that detect increasingly complex features. The first layers detect simple edges and lines, middle layers combine these to find shapes like circles and rectangles, and deeper layers recognize complex objects like faces, cars, and animals. The 'convolutional' part refers to the filtering operations we learned earlier - CNNs automatically learn the best filters for each task! Instead of hand-designing filters, we let the network learn them from thousands of example images. CNNs have revolutionized computer vision because they can: automatically learn hierarchical features, handle images of different sizes, be translation-invariant (recognize objects anywhere in the image), and achieve superhuman performance on many visual tasks. Famous CNN architectures include LeNet (the pioneer), AlexNet (the breakthrough), VGG (simple and effective), ResNet (super deep networks), and EfficientNet (optimized for mobile).",
             estimatedMinutes: 85,
             difficulty: "advanced",
             prerequisites: [
