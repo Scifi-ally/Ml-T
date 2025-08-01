@@ -288,15 +288,13 @@ const Lesson = () => {
               </div>
             </div>
 
-            <div className="flex items-center space-x-4">
-              <div className="text-right">
-                <div className="text-sm font-medium text-black">
-                  {completedSteps.size} / {lesson.interactiveSteps?.length || 0}
-                </div>
-                <div className="text-xs text-gray-500">Steps Completed</div>
+            <div className="flex items-center space-x-3">
+              <div className="text-xs text-gray-500">Progress:</div>
+              <div className="w-16">
+                <Progress value={progressPercentage} className="h-1" />
               </div>
-              <div className="w-24">
-                <Progress value={progressPercentage} className="h-2" />
+              <div className="text-xs font-medium text-black">
+                {completedSteps.size}/{lesson.interactiveSteps?.length || 0}
               </div>
             </div>
           </div>
