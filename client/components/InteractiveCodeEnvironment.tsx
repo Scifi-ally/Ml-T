@@ -254,6 +254,155 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
     };
   };
 
+  // Advanced validation for comprehensive NumPy implementations
+  const validateAdvancedNumPyImplementation = (code: string) => {
+    let issues = [];
+    let output = "";
+
+    // Check for required array creation
+    if (code.includes("person1 = np.array([170, 70, 25])") ||
+        code.includes("person1=np.array([170,70,25])")) {
+      issues.push({
+        passed: true,
+        description: "✅ Person1 vector created correctly",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Create person1 = np.array([170, 70, 25])",
+      });
+    }
+
+    if (code.includes("person2 = np.array([165, 65, 30])") ||
+        code.includes("person2=np.array([165,65,30])")) {
+      issues.push({
+        passed: true,
+        description: "✅ Person2 vector created correctly",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Create person2 = np.array([165, 65, 30])",
+      });
+    }
+
+    // Check for vector operations
+    if (code.includes("person1 + person2") || code.includes("person2 + person1")) {
+      issues.push({
+        passed: true,
+        description: "✅ Vector addition implemented",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Add vectors: combined = person1 + person2",
+      });
+    }
+
+    if (code.includes("0.5 * person1") || code.includes("person1 * 0.5")) {
+      issues.push({
+        passed: true,
+        description: "✅ Scalar multiplication implemented",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Scale vector: scaled = 0.5 * person1",
+      });
+    }
+
+    // Check for advanced operations
+    if (code.includes("np.linalg.norm") && code.includes("person1") && code.includes("person2")) {
+      issues.push({
+        passed: true,
+        description: "✅ Distance calculation using np.linalg.norm",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Calculate distance: np.linalg.norm(person1 - person2)",
+      });
+    }
+
+    if (code.includes("np.dot(person1, person2)") || code.includes("np.dot(person2, person1)")) {
+      issues.push({
+        passed: true,
+        description: "✅ Dot product calculation",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Calculate dot product: np.dot(person1, person2)",
+      });
+    }
+
+    // Check for statistical operations
+    if (code.includes("np.mean") || code.includes(".mean()")) {
+      issues.push({
+        passed: true,
+        description: "✅ Statistical mean calculation",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Add statistical analysis with np.mean()",
+      });
+    }
+
+    if (code.includes("np.std") || code.includes(".std()")) {
+      issues.push({
+        passed: true,
+        description: "✅ Standard deviation calculation",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Add standard deviation with np.std()",
+      });
+    }
+
+    // Check for normalization
+    if (code.includes("/ np.linalg.norm(")) {
+      issues.push({
+        passed: true,
+        description: "✅ Vector normalization implemented",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Normalize vector: vector / np.linalg.norm(vector)",
+      });
+    }
+
+    // Generate output based on completeness
+    const passedCount = issues.filter(issue => issue.passed).length;
+    const totalCount = issues.length;
+
+    if (passedCount === totalCount) {
+      output = `Vector Analysis Results:
+Person 1: [170  70  25]
+Person 2: [165  65  30]
+Combined (element-wise addition): [335 135  55]
+Scaled Person 1 (50%): [ 85.   35.   12.5]
+Distance between persons: 7.07
+Dot product: 24275
+Person 1 magnitude: 185.27
+Statistics - Mean: [167.5  67.5  27.5]
+Statistics - Standard deviation: [  2.5   2.5   2.5]
+Normalized Person 1: [0.918 0.378 0.135]
+
+🎉 EXCELLENT! Complete NumPy mastery demonstrated!`;
+    } else {
+      output = `⚠️ Implementation incomplete: ${passedCount}/${totalCount} requirements met.
+Check the test results below for missing components.`;
+    }
+
+    return {
+      output: output,
+      testResults: issues,
+    };
+  };
+
   const resetCode = () => {
     setUserCode(codeExample.code.replace(/# .*\n/g, ''));
     setOutput("");
