@@ -198,7 +198,7 @@ const MLCourse = () => {
           </div>
 
           {courseStats && (
-            <div className="flex items-center justify-center gap-4 sm:gap-6 max-w-xl mx-auto mb-8 px-4">
+            <div className="flex items-center justify-center gap-4 sm:gap-6 max-w-xl mx-auto mb-4 px-4">
               <div className="text-center">
                 <div className="text-xl sm:text-2xl font-bold text-black mb-1">
                   {courseStats.completedLessons}/{courseStats.totalLessons}
