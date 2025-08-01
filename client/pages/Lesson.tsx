@@ -105,10 +105,10 @@ const Lesson = () => {
       if (currentLessonIndex < module.lessons.length - 1) {
         // Navigate to next lesson in same module
         const nextLesson = module.lessons[currentLessonIndex + 1];
-        window.location.href = `/ml-course/${moduleId}/${nextLesson.id}`;
+        navigate(`/ml-course/${moduleId}/${nextLesson.id}`);
       } else {
         // Navigate back to course overview
-        window.location.href = `/ml-course`;
+        navigate(`/ml-course`);
       }
     }
   };
