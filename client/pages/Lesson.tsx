@@ -356,7 +356,7 @@ const Lesson = () => {
             {/* Interactive Steps */}
             {lesson.interactiveSteps && lesson.interactiveSteps.length > 0 && (
               <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-                <div className="bg-gray-50 border-b border-gray-200 p-4">
+                <div className="bg-gray-50 border-b border-gray-200 p-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center mr-3">
