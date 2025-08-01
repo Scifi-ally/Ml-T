@@ -122,7 +122,7 @@ const MLCourse = () => {
     // Find first lesson in module
     const module = moduleData.find((m) => m.id === moduleId);
     if (module && module.lessons.length > 0) {
-      window.location.href = `/ml-course/${moduleId}/${module.lessons[0].id}`;
+      navigate(`/ml-course/${moduleId}/${module.lessons[0].id}`);
     }
   };
 
