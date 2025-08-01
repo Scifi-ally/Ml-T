@@ -576,7 +576,7 @@ const Lesson = () => {
           </div>
 
           {/* Sidebar */}
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-4 space-y-4 overflow-y-auto h-full">
             {/* Progress Summary */}
             <div className="bg-white border border-gray-200 rounded-xl p-6">
               <div className="flex items-center mb-4">
