@@ -572,34 +572,15 @@ const Lesson = () => {
           {/* Sidebar */}
           <div className="lg:col-span-2 space-y-3 overflow-y-auto h-full">
             {/* Progress Summary */}
-            <div className="bg-white border border-gray-200 rounded-xl p-4">
-              <div className="flex items-center mb-4">
-                <Award className="w-5 h-5 text-yellow-600 mr-2" />
-                <h3 className="font-semibold text-black">Progress</h3>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">Completion</span>
-                  <span className="font-medium text-black">
-                    {progressPercentage.toFixed(0)}%
-                  </span>
+            <div className="bg-white border border-gray-200 rounded-lg p-3">
+              <div className="text-center space-y-2">
+                <div className="text-xs text-gray-500">Progress</div>
+                <div className="text-lg font-bold text-black">
+                  {progressPercentage.toFixed(0)}%
                 </div>
-                <Progress value={progressPercentage} className="h-2" />
-
-                <div className="grid grid-cols-2 gap-4 text-center">
-                  <div className="bg-gray-50 rounded-lg p-3">
-                    <div className="text-lg font-semibold text-black">
-                      {completedSteps.size}
-                    </div>
-                    <div className="text-xs text-gray-500">Completed</div>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-3">
-                    <div className="text-lg font-semibold text-black">
-                      {formatTime(timeSpent)}
-                    </div>
-                    <div className="text-xs text-gray-500">Time Spent</div>
-                  </div>
+                <Progress value={progressPercentage} className="h-1" />
+                <div className="text-xs text-gray-600">
+                  {completedSteps.size}/{lesson.interactiveSteps?.length || 0} steps
                 </div>
               </div>
             </div>
