@@ -405,12 +405,62 @@ const Lesson = () => {
 
                     {/* Theory Step */}
                     {currentStepData.type === "theory" && (
-                      <div className="space-y-4">
+                      <div className="space-y-6">
                         <div className="prose prose-gray max-w-none">
-                          <p className="text-gray-700 leading-relaxed">
+                          <p className="text-gray-700 leading-relaxed whitespace-pre-line">
                             {currentStepData.content}
                           </p>
                         </div>
+
+                        {/* Add visual components based on step content */}
+                        {currentStepData.title.includes("Mathematical Foundations") && (
+                          <div className="space-y-6">
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                              <h5 className="font-medium text-blue-800 mb-3">🎯 Interactive Vector Space</h5>
+                              <VectorSpaceVisualization concept="vector-space" />
+                            </div>
+
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                              <h5 className="font-medium text-green-800 mb-3">📊 Linear Independence Demo</h5>
+                              <VectorSpaceVisualization concept="linear-independence" />
+                            </div>
+
+                            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                              <h5 className="font-medium text-purple-800 mb-3">⚡ Vector Operations</h5>
+                              <VectorSpaceVisualization concept="vector-operations" />
+                            </div>
+
+                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                              <h5 className="font-medium text-orange-800 mb-3">🧮 Vector Space Axioms</h5>
+                              <VectorSpaceVisualization concept="axioms" />
+                            </div>
+                          </div>
+                        )}
+
+                        {currentStepData.title.includes("NumPy Implementation") && (
+                          <div className="space-y-6">
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                              <h5 className="font-medium text-blue-800 mb-3">🏗️ Array Creation</h5>
+                              <NumPyVisualization operation="array-creation" />
+                            </div>
+
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                              <h5 className="font-medium text-green-800 mb-3">➕ Arithmetic Operations</h5>
+                              <NumPyVisualization operation="arithmetic" />
+                            </div>
+
+                            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                              <h5 className="font-medium text-purple-800 mb-3">🧮 Linear Algebra</h5>
+                              <NumPyVisualization operation="linear-algebra" />
+                            </div>
+
+                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                              <h5 className="font-medium text-orange-800 mb-3">📊 Statistics</h5>
+                              <NumPyVisualization operation="statistics" />
+                            </div>
+                          </div>
+                        )}
+
                         {!completedSteps.has(currentStep) ? (
                           <Button
                             onClick={() => handleStepComplete(currentStep)}
