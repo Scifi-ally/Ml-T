@@ -183,7 +183,7 @@ const MLCourse = () => {
         </div>
       </header>
 
-      <div className="px-4 py-8 relative z-10">
+      <div className="px-4 py-4 relative z-10 flex-1 overflow-y-auto">
         {/* Streamlined Hero Section */}
         <div className="mb-8 sm:mb-12">
           <div className="text-center mb-8">
