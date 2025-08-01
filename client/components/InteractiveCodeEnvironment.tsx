@@ -39,13 +39,14 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
   codeExample,
   onComplete,
 }) => {
-  const [userCode, setUserCode] = useState(codeExample.code);
+  const [userCode, setUserCode] = useState(codeExample.code.replace(/# .*\n/g, ''));
   const [output, setOutput] = useState("");
   const [isRunning, setIsRunning] = useState(false);
   const [testResults, setTestResults] = useState<any[]>([]);
   const [showHints, setShowHints] = useState(false);
   const [currentHint, setCurrentHint] = useState(0);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
 
   // Simulate code execution (in a real implementation, this would use a sandboxed Python environment)
   const executeCode = async () => {
@@ -264,7 +265,7 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
   };
 
   const resetCode = () => {
-    setUserCode(codeExample.code);
+    setUserCode(codeExample.code.replace(/# .*\n/g, ''));
     setOutput("");
     setTestResults([]);
     setIsCorrect(false);
@@ -362,24 +363,44 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
                   main.py
                 </span>
               </div>
-              <Button
-                onClick={resetCode}
-                size="sm"
-                variant="outline"
-                className="bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700"
-              >
-                <RotateCcw className="w-3 h-3 mr-1" />
-                Reset
-              </Button>
+              <div className="flex items-center space-x-2">
+                <Button
+                  onClick={() => setIsDarkTheme(!isDarkTheme)}
+                  size="sm"
+                  variant="outline"
+                  className={`${isDarkTheme ? 'bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700' : 'bg-white border-gray-300 text-gray-600 hover:bg-gray-50'}`}
+                >
+                  {isDarkTheme ? '☀️' : '🌙'}
+                </Button>
+                <Button
+                  onClick={resetCode}
+                  size="sm"
+                  variant="outline"
+                  className={`${isDarkTheme ? 'bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700' : 'bg-white border-gray-300 text-gray-600 hover:bg-gray-50'}`}
+                >
+                  <RotateCcw className="w-3 h-3 mr-1" />
+                  Reset
+                </Button>
+              </div>
             </div>
-            <div className="relative bg-gray-900 rounded-lg border border-gray-700 overflow-hidden shadow-2xl">
+            <div className={`relative rounded-lg border overflow-hidden shadow-2xl ${
+              isDarkTheme
+                ? 'bg-gray-900 border-gray-700'
+                : 'bg-white border-gray-300'
+            }`}>
               {/* Line numbers */}
               <div className="flex">
-                <div className="bg-gray-800 px-4 py-6 text-gray-400 font-mono text-sm leading-6 select-none border-r border-gray-700 min-w-[4rem]">
+                <div className={`px-4 py-6 font-mono text-sm leading-6 select-none border-r min-w-[4rem] ${
+                  isDarkTheme
+                    ? 'bg-gray-800 text-gray-400 border-gray-700'
+                    : 'bg-gray-50 text-gray-500 border-gray-200'
+                }`}>
                   {userCode.split("\n").map((_, i) => (
                     <div
                       key={i}
-                      className="text-right pr-2 hover:text-gray-300 transition-colors"
+                      className={`text-right pr-2 transition-colors ${
+                        isDarkTheme ? 'hover:text-gray-300' : 'hover:text-gray-700'
+                      }`}
                     >
                       {i + 1}
                     </div>
@@ -389,17 +410,22 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
                   <textarea
                     value={userCode}
                     onChange={(e) => setUserCode(e.target.value)}
-                    className="w-full h-[500px] p-6 bg-transparent text-green-300 font-mono text-base resize-none focus:outline-none leading-6 placeholder-gray-500"
-                    placeholder="# Welcome to your Python learning environment!
-# Fill in the missing code to complete the exercise
-#
-# Tips:
-# - Use Tab for indentation
-# - Python is case-sensitive
-# - Don't forget the colons (:) after if statements
-#
-# Start coding below this line:
-"
+                    className={`w-full h-[400px] p-6 bg-transparent font-mono text-base resize-none focus:outline-none leading-6 ${
+                      isDarkTheme
+                        ? 'text-green-300 placeholder-gray-500'
+                        : 'text-gray-800 placeholder-gray-400'
+                    }`}
+                    placeholder="import numpy as np
+
+# Fill in the missing code:
+person1 = np.array([___, ___, ___])
+person2 = np.array([___, ___, ___])
+
+combined = ___ + ___
+print('Combined features:', combined)
+
+scaled = ___ * person1
+print('Scaled features:', scaled)"
                     style={{
                       fontFamily:
                         'Fira Code, Monaco, Consolas, "Courier New", monospace',
@@ -416,7 +442,11 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
                 </div>
               </div>
               {/* Bottom status bar */}
-              <div className="bg-gray-800 border-t border-gray-700 px-4 py-2 flex items-center justify-between text-xs text-gray-400">
+              <div className={`border-t px-4 py-2 flex items-center justify-between text-xs ${
+                isDarkTheme
+                  ? 'bg-gray-800 border-gray-700 text-gray-400'
+                  : 'bg-gray-100 border-gray-200 text-gray-600'
+              }`}>
                 <div className="flex items-center space-x-4">
                   <span>Python 3.9</span>
                   <span>UTF-8</span>
