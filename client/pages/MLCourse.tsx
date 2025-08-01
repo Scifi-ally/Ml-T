@@ -185,7 +185,7 @@ const MLCourse = () => {
 
       <div className="px-4 py-4 relative z-10 flex-1 overflow-y-auto">
         {/* Streamlined Hero Section */}
-        <div className="mb-8 sm:mb-12">
+        <div className="mb-4 sm:mb-6">
           <div className="text-center mb-8">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4 tracking-tight leading-tight">
               Complete AI/ML Mastery Program
