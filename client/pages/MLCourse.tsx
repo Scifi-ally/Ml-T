@@ -317,7 +317,7 @@ const MLCourse = () => {
           onValueChange={handleTabChange}
           className="w-full"
         >
-          <div className="mb-8">
+          <div className="mb-4">
             <div className="max-w-md mx-auto mb-8 px-4">
               <TabsList className="grid w-full grid-cols-3 bg-gray-50 border border-gray-200 p-1 rounded-lg">
                 <TabsTrigger
