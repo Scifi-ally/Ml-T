@@ -87,35 +87,25 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
     setIsRunning(false);
   };
 
-  // Simulate Python code execution with beginner-friendly feedback
+  // Simulate Python code execution with comprehensive validation
   const simulateCodeExecution = async (code: string) => {
-    // Check for common beginner mistakes first
-    if (code.includes("___")) {
+    // Check for proper import
+    if (!code.includes("import numpy as np")) {
       return {
         output:
-          "❌ Error: You still have blanks (___) in your code!\n\n💡 Tip: Replace all ___ with the correct values.\nLook at the comments and hints for guidance!",
+          "❌ Error: Missing NumPy import!\n\n💡 You must import NumPy with: import numpy as np",
         testResults: [
           {
             passed: false,
-            description:
-              "Please fill in all the blank spaces (___) in your code",
+            description: "NumPy library not imported correctly",
           },
         ],
       };
     }
 
-    if (!code.includes("import numpy as np")) {
-      return {
-        output:
-          "❌ Error: Missing import statement!\n\n💡 Tip: You need 'import numpy as np' at the beginning.",
-        testResults: [
-          {
-            passed: false,
-            description:
-              "NumPy library not imported. Add 'import numpy as np' at the top.",
-          },
-        ],
-      };
+    // Advanced validation for complete implementations
+    if (codeExample.id === "advanced-numpy-mastery") {
+      return validateAdvancedNumPyImplementation(code);
     }
 
     // Check for vector operations exercise
