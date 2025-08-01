@@ -198,7 +198,9 @@ class DataService {
                 content: `🧠 DEEP MATHEMATICAL FOUNDATIONS OF VECTOR SPACES
 
 📐 What is a Vector Space? (Mathematical Rigor)
-A vector space V over a field F is a set equipped with two operations satisfying eight fundamental axioms. Understanding these axioms is crucial for machine learning:
+A vector space V over a field F is a set equipped with two operations satisfying eight fundamental axioms. Understanding these axioms is crucial for machine learning.
+
+VISUAL LEARNING: Explore the interactive diagrams below to see vectors in action!
 
 The Eight Axioms (Why Each Matters in ML):
 
@@ -244,7 +246,9 @@ Critical ML Implications:
 • Dependent features are redundant (multicollinearity)
 • Rank of data matrix = number of truly independent features
 • PCA finds the most important independent directions
-• Feature selection removes dependent/redundant features`,
+• Feature selection removes dependent/redundant features
+
+INTERACTIVE EXPLORATION: Use the visualizations below to experiment with vector operations and see how linear independence works in practice!`,
               },
               {
                 id: "step-2",
@@ -279,7 +283,7 @@ Before you write any code, you must understand EXACTLY how to implement every Nu
 • Standard deviation: np.std(data) measures how spread out values are
 • Working with multiple vectors: Use np.vstack([v1, v2]) to stack vertically
 
-🎯 Vector Normalization Concept:
+�� Vector Normalization Concept:
 • Unit vector creation: vector / np.linalg.norm(vector)
 • Purpose: Creates vector with magnitude 1 pointing in same direction
 • ML application: Feature normalization for neural networks
