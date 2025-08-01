@@ -226,7 +226,7 @@ const MLCourse = () => {
           )}
 
           {/* Learning Pathway */}
-          <div className="max-w-3xl mx-auto mb-8 px-4">
+          <div className="max-w-3xl mx-auto mb-4 px-4">
             <LearningPathway
               steps={[
                 {
