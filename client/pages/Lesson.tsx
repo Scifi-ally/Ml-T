@@ -310,7 +310,7 @@ const Lesson = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex-1 overflow-hidden">
         <div className="grid lg:grid-cols-12 gap-6 h-full">
           {/* Main Content */}
-          <div className="lg:col-span-8 space-y-6">
+          <div className="lg:col-span-8 space-y-4 overflow-y-auto h-full">
             {/* Lesson Overview */}
             <div className="bg-white border border-gray-200 rounded-xl p-6">
               <div className="flex items-center mb-4">
