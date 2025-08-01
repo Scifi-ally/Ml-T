@@ -26,6 +26,7 @@ import { dataService, LessonData, LessonStep } from "@/lib/dataService";
 
 const Lesson = () => {
   const { moduleId, lessonId } = useParams();
+  const navigate = useNavigate();
   const [lesson, setLesson] = useState<LessonData | null>(null);
   const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
