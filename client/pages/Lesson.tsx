@@ -612,7 +612,7 @@ const Lesson = () => {
 
             {/* Prerequisites */}
             {lesson.prerequisites.length > 0 && (
-              <div className="bg-white border border-gray-200 rounded-xl p-6">
+              <div className="bg-white border border-gray-200 rounded-xl p-4">
                 <h3 className="font-semibold text-black mb-4">Prerequisites</h3>
                 <div className="space-y-2">
                   {lesson.prerequisites.map((prereq, index) => (
