@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import VectorSpaceVisualization from "@/components/VectorSpaceVisualization";
+import NumPyVisualization from "@/components/NumPyVisualization";
 
 import {
   ChevronLeft,
@@ -583,56 +585,21 @@ const Lesson = () => {
 
           {/* Sidebar */}
           <div className="lg:col-span-2 space-y-3 overflow-y-auto h-full">
-            {/* Progress Summary */}
-            <div className="bg-white border border-gray-200 rounded-lg p-3">
-              <div className="text-center space-y-2">
-                <div className="text-xs text-gray-500">Progress</div>
-                <div className="text-lg font-bold text-black">
-                  {progressPercentage.toFixed(0)}%
-                </div>
-                <Progress value={progressPercentage} className="h-1" />
-                <div className="text-xs text-gray-600">
-                  {completedSteps.size}/{lesson.interactiveSteps?.length || 0} steps
-                </div>
-              </div>
-            </div>
-
-            {/* Prerequisites */}
-            {lesson.prerequisites.length > 0 && (
-              <div className="bg-white border border-gray-200 rounded-lg p-3">
-                <h4 className="font-medium text-black mb-2 text-sm">Prerequisites</h4>
-                <div className="space-y-1">
-                  {lesson.prerequisites.slice(0, 2).map((prereq, index) => (
-                    <div
-                      key={index}
-                      className="flex items-start text-xs text-gray-600"
-                    >
-                      <CheckCircle className="w-2 h-2 mr-1 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="leading-tight">{prereq}</span>
-                    </div>
-                  ))}
-                  {lesson.prerequisites.length > 2 && (
-                    <div className="text-xs text-gray-500">+{lesson.prerequisites.length - 2} more</div>
-                  )}
-                </div>
-              </div>
-            )}
-
             {/* Key Concepts */}
             {lesson.theoreticalFoundations && (
               <div className="bg-white border border-gray-200 rounded-lg p-3">
-                <h4 className="font-medium text-black mb-2 text-sm">Concepts</h4>
+                <h4 className="font-medium text-black mb-2 text-sm">Key Concepts</h4>
                 {lesson.theoreticalFoundations.keyTheorems && (
                   <div className="space-y-1">
-                    {lesson.theoreticalFoundations.keyTheorems.slice(0, 3).map(
+                    {lesson.theoreticalFoundations.keyTheorems.slice(0, 5).map(
                       (theorem, index) => (
                         <div key={index} className="text-xs text-gray-600 leading-tight">
-                          • {theorem.length > 30 ? theorem.substring(0, 30) + '...' : theorem}
+                          • {theorem}
                         </div>
                       ),
                     )}
-                    {lesson.theoreticalFoundations.keyTheorems.length > 3 && (
-                      <div className="text-xs text-gray-500">+{lesson.theoreticalFoundations.keyTheorems.length - 3} more</div>
+                    {lesson.theoreticalFoundations.keyTheorems.length > 5 && (
+                      <div className="text-xs text-gray-500">+{lesson.theoreticalFoundations.keyTheorems.length - 5} more</div>
                     )}
                   </div>
                 )}
