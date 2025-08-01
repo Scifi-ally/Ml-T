@@ -554,14 +554,11 @@ Check the test results below for missing components.`;
                         ? 'text-green-300 placeholder-gray-500'
                         : 'text-gray-800 placeholder-gray-400'
                     }`}
-                    placeholder="# Write your complete NumPy program here
-# Import library, create vectors, perform all operations
-# Demonstrate mastery of NumPy concepts
+                    placeholder="# Complete NumPy Vector Analysis Implementation
+# Write everything from scratch - no templates provided
+# Use your theoretical knowledge to demonstrate mastery
 
-# Your comprehensive implementation goes here...
-import numpy as np
-
-# Create your vectors and implement all required operations"
+# Your professional implementation starts here..."
                     style={{
                       fontFamily:
                         'Fira Code, Monaco, Consolas, "Courier New", monospace',
