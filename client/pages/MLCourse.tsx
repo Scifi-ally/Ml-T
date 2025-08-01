@@ -37,6 +37,7 @@ import {
 } from "@/lib/dataService";
 
 const MLCourse = () => {
+  const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState("curriculum");
   const [moduleData, setModuleData] = useState<ModuleData[]>([]);
   const [projectData, setProjectData] = useState<ProjectData[]>([]);
