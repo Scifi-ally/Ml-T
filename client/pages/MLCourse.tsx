@@ -142,7 +142,7 @@ const MLCourse = () => {
         ))}
       </div>
       {/* Enhanced Header with glassmorphism */}
-      <header className="bg-white/80 backdrop-blur-xl border-b border-gray-200/50 sticky top-0 z-50">
+      <header className="bg-white/80 backdrop-blur-xl border-b border-gray-200/50 z-50 flex-shrink-0">
         <div className="px-4 py-4 relative">
           {/* Animated border */}
           <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent opacity-50" />
