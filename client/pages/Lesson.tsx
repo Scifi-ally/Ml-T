@@ -512,19 +512,55 @@ const Lesson = () => {
                         <div className="space-y-6">
                           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                             <h5 className="font-semibold text-blue-800 mb-3">📝 What You'll Build</h5>
-                            <p className="text-blue-700 text-sm leading-relaxed mb-4">
+                            <p className="text-blue-700 text-sm leading-relaxed mb-4 whitespace-pre-line">
                               {currentStepData.content}
                             </p>
                             <div className="bg-white p-3 rounded border border-blue-200">
                               <h6 className="font-medium text-blue-800 text-sm mb-2">🎯 Your Task:</h6>
                               <ul className="text-blue-700 text-sm space-y-1">
-                                <li>• Look for the blanks (___) in the code below</li>
-                                <li>• Fill them with the correct values</li>
-                                <li>• Run the code to see if your output matches the expected result</li>
-                                <li>• Use hints if you get stuck!</li>
+                                <li>• Write complete NumPy implementation from scratch</li>
+                                <li>• Use all the theoretical knowledge you've learned</li>
+                                <li>• Implement every required operation independently</li>
+                                <li>• Produce exact output matching the expected format</li>
                               </ul>
                             </div>
                           </div>
+
+                          {/* Visual Concept Explorer */}
+                          <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                            <h5 className="font-semibold text-purple-800 mb-3">🎯 Interactive Concept Review</h5>
+                            <ConceptExplorer
+                              concepts={[
+                                {
+                                  title: "Array Creation",
+                                  description: "NumPy arrays are the foundation of all operations. They store numerical data in a structured format that enables efficient mathematical computations.",
+                                  example: "Used in ML to represent feature vectors - each person's height, weight, and age forms a vector that algorithms can process.",
+                                  visualization: "array",
+                                  data: { values: [170, 70, 25] }
+                                },
+                                {
+                                  title: "Vector Addition",
+                                  description: "Element-wise addition combines corresponding elements from two vectors. This operation is fundamental in machine learning for combining features and data points.",
+                                  example: "Combining feature vectors in ensemble methods or adding bias terms in neural networks.",
+                                  visualization: "operation"
+                                },
+                                {
+                                  title: "Linear Algebra",
+                                  description: "Operations like dot products and norms measure relationships between vectors and their geometric properties in high-dimensional space.",
+                                  example: "Similarity calculations in recommendation systems use dot products to find users with similar preferences.",
+                                  visualization: "formula"
+                                },
+                                {
+                                  title: "Statistical Analysis",
+                                  description: "Computing means, standard deviations, and other statistics helps understand data distribution and prepare it for machine learning algorithms.",
+                                  example: "Feature normalization using mean and standard deviation ensures all features contribute equally to model training.",
+                                  visualization: "array",
+                                  data: { values: [167.5, 67.5, 27.5] }
+                                }
+                              ]}
+                            />
+                          </div>
+
                           <InteractiveCodeEnvironment
                             codeExample={currentStepData.codeExample}
                             onComplete={(success) =>
