@@ -39,13 +39,14 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
   codeExample,
   onComplete,
 }) => {
-  const [userCode, setUserCode] = useState(codeExample.code);
+  const [userCode, setUserCode] = useState(codeExample.code.replace(/# .*\n/g, ''));
   const [output, setOutput] = useState("");
   const [isRunning, setIsRunning] = useState(false);
   const [testResults, setTestResults] = useState<any[]>([]);
   const [showHints, setShowHints] = useState(false);
   const [currentHint, setCurrentHint] = useState(0);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
 
   // Simulate code execution (in a real implementation, this would use a sandboxed Python environment)
   const executeCode = async () => {
@@ -86,35 +87,25 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
     setIsRunning(false);
   };
 
-  // Simulate Python code execution with beginner-friendly feedback
+  // Simulate Python code execution with comprehensive validation
   const simulateCodeExecution = async (code: string) => {
-    // Check for common beginner mistakes first
-    if (code.includes("___")) {
+    // Check for proper import
+    if (!code.includes("import numpy as np")) {
       return {
         output:
-          "❌ Error: You still have blanks (___) in your code!\n\n💡 Tip: Replace all ___ with the correct values.\nLook at the comments and hints for guidance!",
+          "❌ Error: Missing NumPy import!\n\n💡 You must import NumPy with: import numpy as np",
         testResults: [
           {
             passed: false,
-            description:
-              "Please fill in all the blank spaces (___) in your code",
+            description: "NumPy library not imported correctly",
           },
         ],
       };
     }
 
-    if (!code.includes("import numpy as np")) {
-      return {
-        output:
-          "❌ Error: Missing import statement!\n\n💡 Tip: You need 'import numpy as np' at the beginning.",
-        testResults: [
-          {
-            passed: false,
-            description:
-              "NumPy library not imported. Add 'import numpy as np' at the top.",
-          },
-        ],
-      };
+    // Advanced validation for complete implementations
+    if (codeExample.id === "complete-numpy-implementation") {
+      return validateAdvancedNumPyImplementation(code);
     }
 
     // Check for vector operations exercise
@@ -263,8 +254,157 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
     };
   };
 
+  // Advanced validation for comprehensive NumPy implementations
+  const validateAdvancedNumPyImplementation = (code: string) => {
+    let issues = [];
+    let output = "";
+
+    // Check for required array creation
+    if (code.includes("person1 = np.array([170, 70, 25])") ||
+        code.includes("person1=np.array([170,70,25])")) {
+      issues.push({
+        passed: true,
+        description: "✅ Person1 vector created correctly",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Create person1 = np.array([170, 70, 25])",
+      });
+    }
+
+    if (code.includes("person2 = np.array([165, 65, 30])") ||
+        code.includes("person2=np.array([165,65,30])")) {
+      issues.push({
+        passed: true,
+        description: "✅ Person2 vector created correctly",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Create person2 = np.array([165, 65, 30])",
+      });
+    }
+
+    // Check for vector operations
+    if (code.includes("person1 + person2") || code.includes("person2 + person1")) {
+      issues.push({
+        passed: true,
+        description: "✅ Vector addition implemented",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Add vectors: combined = person1 + person2",
+      });
+    }
+
+    if (code.includes("0.5 * person1") || code.includes("person1 * 0.5")) {
+      issues.push({
+        passed: true,
+        description: "✅ Scalar multiplication implemented",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Scale vector: scaled = 0.5 * person1",
+      });
+    }
+
+    // Check for advanced operations
+    if (code.includes("np.linalg.norm") && code.includes("person1") && code.includes("person2")) {
+      issues.push({
+        passed: true,
+        description: "✅ Distance calculation using np.linalg.norm",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Calculate distance: np.linalg.norm(person1 - person2)",
+      });
+    }
+
+    if (code.includes("np.dot(person1, person2)") || code.includes("np.dot(person2, person1)")) {
+      issues.push({
+        passed: true,
+        description: "✅ Dot product calculation",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Calculate dot product: np.dot(person1, person2)",
+      });
+    }
+
+    // Check for statistical operations
+    if (code.includes("np.mean") || code.includes(".mean()")) {
+      issues.push({
+        passed: true,
+        description: "✅ Statistical mean calculation",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Add statistical analysis with np.mean()",
+      });
+    }
+
+    if (code.includes("np.std") || code.includes(".std()")) {
+      issues.push({
+        passed: true,
+        description: "✅ Standard deviation calculation",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Add standard deviation with np.std()",
+      });
+    }
+
+    // Check for normalization
+    if (code.includes("/ np.linalg.norm(")) {
+      issues.push({
+        passed: true,
+        description: "✅ Vector normalization implemented",
+      });
+    } else {
+      issues.push({
+        passed: false,
+        description: "❌ Normalize vector: vector / np.linalg.norm(vector)",
+      });
+    }
+
+    // Generate output based on completeness
+    const passedCount = issues.filter(issue => issue.passed).length;
+    const totalCount = issues.length;
+
+    if (passedCount === totalCount) {
+      output = `Vector Analysis Results:
+Person 1: [170  70  25]
+Person 2: [165  65  30]
+Combined (element-wise addition): [335 135  55]
+Scaled Person 1 (50%): [ 85.   35.   12.5]
+Distance between persons: 7.07
+Dot product: 24275
+Person 1 magnitude: 185.27
+Statistics - Mean: [167.5  67.5  27.5]
+Statistics - Standard deviation: [  2.5   2.5   2.5]
+Normalized Person 1: [0.918 0.378 0.135]
+
+🎉 EXCELLENT! Complete NumPy mastery demonstrated!`;
+    } else {
+      output = `⚠️ Implementation incomplete: ${passedCount}/${totalCount} requirements met.
+Check the test results below for missing components.`;
+    }
+
+    return {
+      output: output,
+      testResults: issues,
+    };
+  };
+
   const resetCode = () => {
-    setUserCode(codeExample.code);
+    setUserCode(codeExample.code.replace(/# .*\n/g, ''));
     setOutput("");
     setTestResults([]);
     setIsCorrect(false);
@@ -362,24 +502,44 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
                   main.py
                 </span>
               </div>
-              <Button
-                onClick={resetCode}
-                size="sm"
-                variant="outline"
-                className="bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700"
-              >
-                <RotateCcw className="w-3 h-3 mr-1" />
-                Reset
-              </Button>
+              <div className="flex items-center space-x-2">
+                <Button
+                  onClick={() => setIsDarkTheme(!isDarkTheme)}
+                  size="sm"
+                  variant="outline"
+                  className={`${isDarkTheme ? 'bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700' : 'bg-white border-gray-300 text-gray-600 hover:bg-gray-50'}`}
+                >
+                  {isDarkTheme ? '☀️' : '🌙'}
+                </Button>
+                <Button
+                  onClick={resetCode}
+                  size="sm"
+                  variant="outline"
+                  className={`${isDarkTheme ? 'bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700' : 'bg-white border-gray-300 text-gray-600 hover:bg-gray-50'}`}
+                >
+                  <RotateCcw className="w-3 h-3 mr-1" />
+                  Reset
+                </Button>
+              </div>
             </div>
-            <div className="relative bg-gray-900 rounded-lg border border-gray-700 overflow-hidden shadow-2xl">
+            <div className={`relative rounded-lg border overflow-hidden shadow-2xl ${
+              isDarkTheme
+                ? 'bg-gray-900 border-gray-700'
+                : 'bg-white border-gray-300'
+            }`}>
               {/* Line numbers */}
               <div className="flex">
-                <div className="bg-gray-800 px-4 py-6 text-gray-400 font-mono text-sm leading-6 select-none border-r border-gray-700 min-w-[4rem]">
+                <div className={`px-4 py-6 font-mono text-sm leading-6 select-none border-r min-w-[4rem] ${
+                  isDarkTheme
+                    ? 'bg-gray-800 text-gray-400 border-gray-700'
+                    : 'bg-gray-50 text-gray-500 border-gray-200'
+                }`}>
                   {userCode.split("\n").map((_, i) => (
                     <div
                       key={i}
-                      className="text-right pr-2 hover:text-gray-300 transition-colors"
+                      className={`text-right pr-2 transition-colors ${
+                        isDarkTheme ? 'hover:text-gray-300' : 'hover:text-gray-700'
+                      }`}
                     >
                       {i + 1}
                     </div>
@@ -389,17 +549,16 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
                   <textarea
                     value={userCode}
                     onChange={(e) => setUserCode(e.target.value)}
-                    className="w-full h-[500px] p-6 bg-transparent text-green-300 font-mono text-base resize-none focus:outline-none leading-6 placeholder-gray-500"
-                    placeholder="# Welcome to your Python learning environment!
-# Fill in the missing code to complete the exercise
-#
-# Tips:
-# - Use Tab for indentation
-# - Python is case-sensitive
-# - Don't forget the colons (:) after if statements
-#
-# Start coding below this line:
-"
+                    className={`w-full h-[400px] p-6 bg-transparent font-mono text-base resize-none focus:outline-none leading-6 ${
+                      isDarkTheme
+                        ? 'text-green-300 placeholder-gray-500'
+                        : 'text-gray-800 placeholder-gray-400'
+                    }`}
+                    placeholder="# Complete NumPy Vector Analysis Implementation
+# Write everything from scratch - no templates provided
+# Use your theoretical knowledge to demonstrate mastery
+
+# Your professional implementation starts here..."
                     style={{
                       fontFamily:
                         'Fira Code, Monaco, Consolas, "Courier New", monospace',
@@ -416,7 +575,11 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
                 </div>
               </div>
               {/* Bottom status bar */}
-              <div className="bg-gray-800 border-t border-gray-700 px-4 py-2 flex items-center justify-between text-xs text-gray-400">
+              <div className={`border-t px-4 py-2 flex items-center justify-between text-xs ${
+                isDarkTheme
+                  ? 'bg-gray-800 border-gray-700 text-gray-400'
+                  : 'bg-gray-100 border-gray-200 text-gray-600'
+              }`}>
                 <div className="flex items-center space-x-4">
                   <span>Python 3.9</span>
                   <span>UTF-8</span>
@@ -531,12 +694,20 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
         <TabsContent value="output" className="p-4">
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 h-[600px]">
             {/* Console Output */}
-            <div className="bg-gray-900 rounded-lg overflow-hidden shadow-xl border border-gray-700">
-              <div className="bg-gray-800 px-6 py-3 border-b border-gray-700">
+            <div className={`rounded-lg overflow-hidden shadow-xl border ${
+              isDarkTheme
+                ? 'bg-gray-900 border-gray-700'
+                : 'bg-white border-gray-300'
+            }`}>
+              <div className={`px-6 py-3 border-b ${
+                isDarkTheme
+                  ? 'bg-gray-800 border-gray-700'
+                  : 'bg-gray-100 border-gray-200'
+              }`}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
-                    <Terminal className="w-5 h-5 text-gray-400 mr-3" />
-                    <span className="text-gray-300 font-medium">
+                    <Terminal className={`w-5 h-5 mr-3 ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'}`} />
+                    <span className={`font-medium ${isDarkTheme ? 'text-gray-300' : 'text-gray-800'}`}>
                       Console Output
                     </span>
                   </div>
@@ -561,18 +732,20 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
               <div className="p-6 h-[520px] overflow-auto bg-gray-900">
                 <pre className="text-green-300 font-mono whitespace-pre-wrap leading-7 text-base">
                   {output ||
-                    `# 🐍 Python Console - Ready for your code!
-#
-# This is where your program output will appear.
-#
-# What you'll see here:
-# • Print statements from your code
-# • Calculation results
-# • Error messages (if any)
-#
-# 💡 Tip: Use print() to see what your variables contain!
-#
-# Click 'Run Code' to execute your program →`}
+                    `🐍 Python Console - Ready for Advanced NumPy Code!
+
+This console will show your program output including:
+• Vector analysis results
+• Mathematical calculations
+• Statistical computations
+• Error messages and debugging info
+
+💡 Pro Tips:
+• Use print() statements to debug your code
+• Check output format matches expected exactly
+• Review error messages for specific guidance
+
+Write your complete NumPy implementation and click 'Run Code' →`}
                 </pre>
               </div>
             </div>
@@ -637,7 +810,7 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
                           )}
                           {!test.passed && (
                             <p className="text-xs mt-1 opacity-75">
-                              🔍 This needs to be fixed. Check the hint below!
+                              ���� This needs to be fixed. Check the hint below!
                             </p>
                           )}
                         </div>

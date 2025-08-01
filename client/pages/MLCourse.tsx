@@ -127,7 +127,7 @@ const MLCourse = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
+    <div className="h-screen bg-white relative overflow-hidden flex flex-col">
       {/* Floating elements */}
       <div className="fixed inset-0 pointer-events-none z-0">
         {[...Array(12)].map((_, i) => (
@@ -142,7 +142,7 @@ const MLCourse = () => {
         ))}
       </div>
       {/* Enhanced Header with glassmorphism */}
-      <header className="bg-white/80 backdrop-blur-xl border-b border-gray-200/50 sticky top-0 z-50">
+      <header className="bg-white/80 backdrop-blur-xl border-b border-gray-200/50 z-50 flex-shrink-0">
         <div className="px-4 py-4 relative">
           {/* Animated border */}
           <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent opacity-50" />
@@ -183,10 +183,10 @@ const MLCourse = () => {
         </div>
       </header>
 
-      <div className="px-4 py-8 relative z-10">
+      <div className="px-4 py-4 relative z-10 flex-1 overflow-y-auto">
         {/* Streamlined Hero Section */}
-        <div className="mb-8 sm:mb-12">
-          <div className="text-center mb-8">
+        <div className="mb-4 sm:mb-6">
+          <div className="text-center mb-4">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4 tracking-tight leading-tight">
               Complete AI/ML Mastery Program
             </h2>
@@ -198,7 +198,7 @@ const MLCourse = () => {
           </div>
 
           {courseStats && (
-            <div className="flex items-center justify-center gap-4 sm:gap-6 max-w-xl mx-auto mb-8 px-4">
+            <div className="flex items-center justify-center gap-4 sm:gap-6 max-w-xl mx-auto mb-4 px-4">
               <div className="text-center">
                 <div className="text-xl sm:text-2xl font-bold text-black mb-1">
                   {courseStats.completedLessons}/{courseStats.totalLessons}
@@ -226,7 +226,7 @@ const MLCourse = () => {
           )}
 
           {/* Learning Pathway */}
-          <div className="max-w-3xl mx-auto mb-8 px-4">
+          <div className="max-w-3xl mx-auto mb-4 px-4">
             <LearningPathway
               steps={[
                 {
@@ -265,7 +265,7 @@ const MLCourse = () => {
         </div>
 
         {/* Search and Filter Controls */}
-        <div className="mb-8 px-4">
+        <div className="mb-4 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-4 mb-6">
               <div className="relative flex-1">
@@ -317,7 +317,7 @@ const MLCourse = () => {
           onValueChange={handleTabChange}
           className="w-full"
         >
-          <div className="mb-8">
+          <div className="mb-4">
             <div className="max-w-md mx-auto mb-8 px-4">
               <TabsList className="grid w-full grid-cols-3 bg-gray-50 border border-gray-200 p-1 rounded-lg">
                 <TabsTrigger

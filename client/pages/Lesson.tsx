@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import VectorSpaceVisualization from "@/components/VectorSpaceVisualization";
+import NumPyVisualization from "@/components/NumPyVisualization";
+import ConceptExplorer from "@/components/ConceptExplorer";
 
 import {
   ChevronLeft,
@@ -254,10 +257,10 @@ const Lesson = () => {
   const currentStepData = lesson.interactiveSteps?.[currentStep];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="h-screen bg-white flex flex-col overflow-hidden">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
+      <header className="bg-white border-b border-gray-200 z-50 flex-shrink-0">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <Link
@@ -284,35 +287,29 @@ const Lesson = () => {
                   >
                     {lesson.difficulty}
                   </Badge>
-                  <div className="flex items-center">
-                    <Timer className="w-3 h-3 mr-1" />
-                    {formatTime(timeSpent)}
-                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center space-x-4">
-              <div className="text-right">
-                <div className="text-sm font-medium text-black">
-                  {completedSteps.size} / {lesson.interactiveSteps?.length || 0}
-                </div>
-                <div className="text-xs text-gray-500">Steps Completed</div>
+            <div className="flex items-center space-x-3">
+              <div className="text-xs text-gray-500">Progress:</div>
+              <div className="w-16">
+                <Progress value={progressPercentage} className="h-1" />
               </div>
-              <div className="w-24">
-                <Progress value={progressPercentage} className="h-2" />
+              <div className="text-xs font-medium text-black">
+                {completedSteps.size}/{lesson.interactiveSteps?.length || 0}
               </div>
             </div>
           </div>
         </div>
       </header>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
-        <div className="grid lg:grid-cols-12 gap-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex-1 overflow-hidden">
+        <div className="grid lg:grid-cols-12 gap-4 h-full">
           {/* Main Content */}
-          <div className="lg:col-span-8 space-y-6">
+          <div className="lg:col-span-10 space-y-4 overflow-y-auto h-full">
             {/* Lesson Overview */}
-            <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <div className="bg-white border border-gray-200 rounded-xl p-4">
               <div className="flex items-center mb-4">
                 <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center mr-4">
                   <BookOpen className="w-5 h-5 text-white" />
@@ -356,7 +353,7 @@ const Lesson = () => {
             {/* Interactive Steps */}
             {lesson.interactiveSteps && lesson.interactiveSteps.length > 0 && (
               <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-                <div className="bg-gray-50 border-b border-gray-200 p-4">
+                <div className="bg-gray-50 border-b border-gray-200 p-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center mr-3">
@@ -397,7 +394,7 @@ const Lesson = () => {
                 </div>
 
                 {currentStepData && (
-                  <div className="p-6">
+                  <div className="p-4">
                     <div className="mb-4">
                       <h4 className="text-lg font-semibold text-black mb-2">
                         {currentStepData.title}
@@ -409,12 +406,82 @@ const Lesson = () => {
 
                     {/* Theory Step */}
                     {currentStepData.type === "theory" && (
-                      <div className="space-y-4">
+                      <div className="space-y-6">
                         <div className="prose prose-gray max-w-none">
-                          <p className="text-gray-700 leading-relaxed">
+                          <p className="text-gray-700 leading-relaxed whitespace-pre-line">
                             {currentStepData.content}
                           </p>
                         </div>
+
+                        {/* Add visual components based on step content */}
+                        {currentStepData.title.includes(
+                          "Mathematical Foundations",
+                        ) && (
+                          <div className="space-y-6">
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                              <h5 className="font-medium text-blue-800 mb-3">
+                                🎯 Interactive Vector Space
+                              </h5>
+                              <VectorSpaceVisualization concept="vector-space" />
+                            </div>
+
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                              <h5 className="font-medium text-green-800 mb-3">
+                                📊 Linear Independence Demo
+                              </h5>
+                              <VectorSpaceVisualization concept="linear-independence" />
+                            </div>
+
+                            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                              <h5 className="font-medium text-purple-800 mb-3">
+                                ⚡ Vector Operations
+                              </h5>
+                              <VectorSpaceVisualization concept="vector-operations" />
+                            </div>
+
+                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                              <h5 className="font-medium text-orange-800 mb-3">
+                                🧮 Vector Space Axioms
+                              </h5>
+                              <VectorSpaceVisualization concept="axioms" />
+                            </div>
+                          </div>
+                        )}
+
+                        {currentStepData.title.includes(
+                          "NumPy Implementation",
+                        ) && (
+                          <div className="space-y-6">
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                              <h5 className="font-medium text-blue-800 mb-3">
+                                🏗️ Array Creation
+                              </h5>
+                              <NumPyVisualization operation="array-creation" />
+                            </div>
+
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                              <h5 className="font-medium text-green-800 mb-3">
+                                ➕ Arithmetic Operations
+                              </h5>
+                              <NumPyVisualization operation="arithmetic" />
+                            </div>
+
+                            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                              <h5 className="font-medium text-purple-800 mb-3">
+                                🧮 Linear Algebra
+                              </h5>
+                              <NumPyVisualization operation="linear-algebra" />
+                            </div>
+
+                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                              <h5 className="font-medium text-orange-800 mb-3">
+                                📊 Statistics
+                              </h5>
+                              <NumPyVisualization operation="statistics" />
+                            </div>
+                          </div>
+                        )}
+
                         {!completedSteps.has(currentStep) ? (
                           <Button
                             onClick={() => handleStepComplete(currentStep)}
@@ -462,10 +529,84 @@ const Lesson = () => {
                     {/* Practice Step */}
                     {currentStepData.type === "practice" &&
                       currentStepData.codeExample && (
-                        <div className="space-y-4">
-                          <p className="text-gray-700">
-                            {currentStepData.content}
-                          </p>
+                        <div className="space-y-6">
+                          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                            <h5 className="font-semibold text-blue-800 mb-3">
+                              📝 What You'll Build
+                            </h5>
+                            <p className="text-blue-700 text-sm leading-relaxed mb-4 whitespace-pre-line">
+                              {currentStepData.content}
+                            </p>
+                            <div className="bg-white p-3 rounded border border-blue-200">
+                              <h6 className="font-medium text-blue-800 text-sm mb-2">
+                                🎯 Your Task:
+                              </h6>
+                              <ul className="text-blue-700 text-sm space-y-1">
+                                <li>
+                                  • Write complete NumPy implementation from
+                                  scratch
+                                </li>
+                                <li>
+                                  • Use all the theoretical knowledge you've
+                                  learned
+                                </li>
+                                <li>
+                                  • Implement every required operation
+                                  independently
+                                </li>
+                                <li>
+                                  • Produce exact output matching the expected
+                                  format
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+
+                          {/* Visual Concept Explorer */}
+                          <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                            <h5 className="font-semibold text-purple-800 mb-3">
+                              🎯 Interactive Concept Review
+                            </h5>
+                            <ConceptExplorer
+                              concepts={[
+                                {
+                                  title: "Array Creation",
+                                  description:
+                                    "NumPy arrays are the foundation of all operations. They store numerical data in a structured format that enables efficient mathematical computations.",
+                                  example:
+                                    "Used in ML to represent feature vectors - each person's height, weight, and age forms a vector that algorithms can process.",
+                                  visualization: "array",
+                                  data: { values: [170, 70, 25] },
+                                },
+                                {
+                                  title: "Vector Addition",
+                                  description:
+                                    "Element-wise addition combines corresponding elements from two vectors. This operation is fundamental in machine learning for combining features and data points.",
+                                  example:
+                                    "Combining feature vectors in ensemble methods or adding bias terms in neural networks.",
+                                  visualization: "operation",
+                                },
+                                {
+                                  title: "Linear Algebra",
+                                  description:
+                                    "Operations like dot products and norms measure relationships between vectors and their geometric properties in high-dimensional space.",
+                                  example:
+                                    "Similarity calculations in recommendation systems use dot products to find users with similar preferences.",
+                                  visualization: "formula",
+                                },
+                                {
+                                  title: "Statistical Analysis",
+                                  description:
+                                    "Computing means, standard deviations, and other statistics helps understand data distribution and prepare it for machine learning algorithms.",
+                                  example:
+                                    "Feature normalization using mean and standard deviation ensures all features contribute equally to model training.",
+                                  visualization: "array",
+                                  data: { values: [167.5, 67.5, 27.5] },
+                                },
+                              ]}
+                            />
+                          </div>
+
                           <InteractiveCodeEnvironment
                             codeExample={currentStepData.codeExample}
                             onComplete={(success) =>
@@ -576,94 +717,31 @@ const Lesson = () => {
           </div>
 
           {/* Sidebar */}
-          <div className="lg:col-span-4 space-y-6">
-            {/* Progress Summary */}
-            <div className="bg-white border border-gray-200 rounded-xl p-6">
-              <div className="flex items-center mb-4">
-                <Award className="w-5 h-5 text-yellow-600 mr-2" />
-                <h3 className="font-semibold text-black">Progress</h3>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">Completion</span>
-                  <span className="font-medium text-black">
-                    {progressPercentage.toFixed(0)}%
-                  </span>
-                </div>
-                <Progress value={progressPercentage} className="h-2" />
-
-                <div className="grid grid-cols-2 gap-4 text-center">
-                  <div className="bg-gray-50 rounded-lg p-3">
-                    <div className="text-lg font-semibold text-black">
-                      {completedSteps.size}
-                    </div>
-                    <div className="text-xs text-gray-500">Completed</div>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-3">
-                    <div className="text-lg font-semibold text-black">
-                      {formatTime(timeSpent)}
-                    </div>
-                    <div className="text-xs text-gray-500">Time Spent</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Prerequisites */}
-            {lesson.prerequisites.length > 0 && (
-              <div className="bg-white border border-gray-200 rounded-xl p-6">
-                <h3 className="font-semibold text-black mb-4">Prerequisites</h3>
-                <div className="space-y-2">
-                  {lesson.prerequisites.map((prereq, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center text-sm text-gray-600"
-                    >
-                      <CheckCircle className="w-3 h-3 mr-2 text-green-500" />
-                      {prereq}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Theory Foundations */}
+          <div className="lg:col-span-2 space-y-3 overflow-y-auto h-full">
+            {/* Key Concepts */}
             {lesson.theoreticalFoundations && (
-              <div className="bg-white border border-gray-200 rounded-xl p-6">
-                <h3 className="font-semibold text-black mb-4">Key Concepts</h3>
-
+              <div className="bg-white border border-gray-200 rounded-lg p-3">
+                <h4 className="font-medium text-black mb-2 text-sm">
+                  Key Concepts
+                </h4>
                 {lesson.theoreticalFoundations.keyTheorems && (
-                  <div className="mb-4">
-                    <h4 className="text-sm font-medium text-gray-900 mb-2">
-                      Key Theorems
-                    </h4>
-                    <ul className="space-y-1">
-                      {lesson.theoreticalFoundations.keyTheorems.map(
-                        (theorem, index) => (
-                          <li key={index} className="text-xs text-gray-600">
-                            • {theorem}
-                          </li>
-                        ),
-                      )}
-                    </ul>
-                  </div>
-                )}
-
-                {lesson.theoreticalFoundations.realWorldConnections && (
-                  <div className="mb-4">
-                    <h4 className="text-sm font-medium text-gray-900 mb-2">
-                      Real-World Applications
-                    </h4>
-                    <ul className="space-y-1">
-                      {lesson.theoreticalFoundations.realWorldConnections.map(
-                        (connection, index) => (
-                          <li key={index} className="text-xs text-gray-600">
-                            • {connection}
-                          </li>
-                        ),
-                      )}
-                    </ul>
+                  <div className="space-y-1">
+                    {lesson.theoreticalFoundations.keyTheorems
+                      .slice(0, 5)
+                      .map((theorem, index) => (
+                        <div
+                          key={index}
+                          className="text-xs text-gray-600 leading-tight"
+                        >
+                          • {theorem}
+                        </div>
+                      ))}
+                    {lesson.theoreticalFoundations.keyTheorems.length > 5 && (
+                      <div className="text-xs text-gray-500">
+                        +{lesson.theoreticalFoundations.keyTheorems.length - 5}{" "}
+                        more
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
