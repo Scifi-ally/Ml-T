@@ -284,10 +284,6 @@ const Lesson = () => {
                   >
                     {lesson.difficulty}
                   </Badge>
-                  <div className="flex items-center">
-                    <Timer className="w-3 h-3 mr-1" />
-                    {formatTime(timeSpent)}
-                  </div>
                 </div>
               </div>
             </div>
