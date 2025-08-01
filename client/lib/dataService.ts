@@ -250,52 +250,52 @@ Critical ML Implications:
                 id: "step-2",
                 type: "theory",
                 title: "Complete NumPy Implementation Knowledge",
-                content: `🔬 **COMPLETE NUMPY IMPLEMENTATION MASTERY**
+                content: `🔬 COMPLETE NUMPY IMPLEMENTATION MASTERY
 
 Before you write any code, you must understand EXACTLY how to implement every NumPy operation. This knowledge will enable you to write complete programs from scratch.
 
-📚 **Array Creation Mastery:**
-• **np.array([values])** - Creates array from Python list
+📚 Array Creation Mastery:
+• np.array([values]) - Creates array from Python list
   Example context: np.array([170, 70, 25]) creates person vector
-• **Data types automatically inferred** - integers stay int, floats stay float
-• **Shape determined by input** - [170, 70, 25] becomes shape (3,)
+• Data types automatically inferred - integers stay int, floats stay float
+• Shape determined by input - [170, 70, 25] becomes shape (3,)
 
-⚡ **Essential Arithmetic Operations:**
-• **Element-wise addition**: When you add two arrays of same shape, each corresponding element is added
+⚡ Essential Arithmetic Operations:
+• Element-wise addition: When you add two arrays of same shape, each corresponding element is added
   Mathematical principle: [a, b, c] + [d, e, f] = [a+d, b+e, c+f]
-• **Scalar multiplication**: Multiplying array by single number scales all elements
+• Scalar multiplication: Multiplying array by single number scales all elements
   Mathematical principle: k * [a, b, c] = [k*a, k*b, k*c]
 
-🧮 **Linear Algebra Operations You Must Know:**
-• **Vector magnitude/norm**: np.linalg.norm(vector) calculates √(x₁² + x₂² + ... + xₙ²)
+🧮 Linear Algebra Operations You Must Know:
+• Vector magnitude/norm: np.linalg.norm(vector) calculates √(x₁² + x₂² + ... + xₙ²)
   Physical meaning: Length of vector in n-dimensional space
-• **Dot product**: np.dot(v1, v2) computes v₁·v₂ = x₁y₁ + x₂y₂ + ... + xₙyₙ
+• Dot product: np.dot(v1, v2) computes v₁·v₂ = x₁y₁ + x₂y₂ + ... + xₙyₙ
   Geometric meaning: Measures how aligned two vectors are
-• **Distance calculation**: np.linalg.norm(v1 - v2) gives Euclidean distance
+• Distance calculation: np.linalg.norm(v1 - v2) gives Euclidean distance
   Physical meaning: Straight-line distance between two points
 
-📊 **Statistical Analysis Functions:**
-• **Mean calculation**: np.mean(data) or data.mean() computes average
-• **Standard deviation**: np.std(data) measures how spread out values are
-• **Working with multiple vectors**: Use np.vstack([v1, v2]) to stack vertically
+📊 Statistical Analysis Functions:
+• Mean calculation: np.mean(data) or data.mean() computes average
+• Standard deviation: np.std(data) measures how spread out values are
+• Working with multiple vectors: Use np.vstack([v1, v2]) to stack vertically
 
-🎯 **Vector Normalization Concept:**
-• **Unit vector creation**: vector / np.linalg.norm(vector)
-• **Purpose**: Creates vector with magnitude 1 pointing in same direction
-• **ML application**: Feature normalization for neural networks
+🎯 Vector Normalization Concept:
+• Unit vector creation: vector / np.linalg.norm(vector)
+• Purpose: Creates vector with magnitude 1 pointing in same direction
+• ML application: Feature normalization for neural networks
 
-💻 **Program Structure Requirements:**
-1. **Import statement**: Always start with numpy import
-2. **Data representation**: Use appropriate array creation
-3. **Operations sequence**: Logical flow from creation to analysis
-4. **Output formatting**: Clear labels for each result
-5. **Mathematical correctness**: Each operation must produce valid results
+💻 Program Structure Requirements:
+1. Import statement: Always start with numpy import
+2. Data representation: Use appropriate array creation
+3. Operations sequence: Logical flow from creation to analysis
+4. Output formatting: Clear labels for each result
+5. Mathematical correctness: Each operation must produce valid results
 
-🧠 **Key Implementation Principles:**
-• **No magic numbers**: Each value should have clear meaning
-• **Meaningful variable names**: person1, person2, combined, scaled, etc.
-• **Print statements**: Each calculation should be displayed with description
-• **Mathematical accuracy**: Results must match expected mathematical outcomes
+🧠 Key Implementation Principles:
+• No magic numbers: Each value should have clear meaning
+• Meaningful variable names: person1, person2, combined, scaled, etc.
+• Print statements: Each calculation should be displayed with description
+• Mathematical accuracy: Results must match expected mathematical outcomes
 
 You now have complete theoretical knowledge to implement any NumPy vector analysis program!`,
               },
@@ -3524,7 +3524,7 @@ print(f"Neuron output: {output:.4f}")`,
             title:
               "Convolutional Neural Networks: The Brain Behind Computer Vision",
             content:
-              "�� Convolutional Neural Networks (CNNs) are the 'brain' that powers most modern computer vision applications! CNNs are inspired by how the human visual system works - just like your brain has different areas that specialize in detecting edges, shapes, and complex objects, CNNs have layers that detect increasingly complex features. The first layers detect simple edges and lines, middle layers combine these to find shapes like circles and rectangles, and deeper layers recognize complex objects like faces, cars, and animals. The 'convolutional' part refers to the filtering operations we learned earlier - CNNs automatically learn the best filters for each task! Instead of hand-designing filters, we let the network learn them from thousands of example images. CNNs have revolutionized computer vision because they can: automatically learn hierarchical features, handle images of different sizes, be translation-invariant (recognize objects anywhere in the image), and achieve superhuman performance on many visual tasks. Famous CNN architectures include LeNet (the pioneer), AlexNet (the breakthrough), VGG (simple and effective), ResNet (super deep networks), and EfficientNet (optimized for mobile).",
+              "🧠 Convolutional Neural Networks (CNNs) are the 'brain' that powers most modern computer vision applications! CNNs are inspired by how the human visual system works - just like your brain has different areas that specialize in detecting edges, shapes, and complex objects, CNNs have layers that detect increasingly complex features. The first layers detect simple edges and lines, middle layers combine these to find shapes like circles and rectangles, and deeper layers recognize complex objects like faces, cars, and animals. The 'convolutional' part refers to the filtering operations we learned earlier - CNNs automatically learn the best filters for each task! Instead of hand-designing filters, we let the network learn them from thousands of example images. CNNs have revolutionized computer vision because they can: automatically learn hierarchical features, handle images of different sizes, be translation-invariant (recognize objects anywhere in the image), and achieve superhuman performance on many visual tasks. Famous CNN architectures include LeNet (the pioneer), AlexNet (the breakthrough), VGG (simple and effective), ResNet (super deep networks), and EfficientNet (optimized for mobile).",
             estimatedMinutes: 85,
             difficulty: "advanced",
             prerequisites: [
