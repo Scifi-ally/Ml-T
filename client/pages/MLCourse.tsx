@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
@@ -37,6 +37,7 @@ import {
 } from "@/lib/dataService";
 
 const MLCourse = () => {
+  const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState("curriculum");
   const [moduleData, setModuleData] = useState<ModuleData[]>([]);
   const [projectData, setProjectData] = useState<ProjectData[]>([]);
@@ -121,7 +122,7 @@ const MLCourse = () => {
     // Find first lesson in module
     const module = moduleData.find((m) => m.id === moduleId);
     if (module && module.lessons.length > 0) {
-      window.location.href = `/ml-course/${moduleId}/${module.lessons[0].id}`;
+      navigate(`/ml-course/${moduleId}/${module.lessons[0].id}`);
     }
   };
 

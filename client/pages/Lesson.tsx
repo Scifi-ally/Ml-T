@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
@@ -26,6 +26,7 @@ import { dataService, LessonData, LessonStep } from "@/lib/dataService";
 
 const Lesson = () => {
   const { moduleId, lessonId } = useParams();
+  const navigate = useNavigate();
   const [lesson, setLesson] = useState<LessonData | null>(null);
   const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
@@ -104,10 +105,10 @@ const Lesson = () => {
       if (currentLessonIndex < module.lessons.length - 1) {
         // Navigate to next lesson in same module
         const nextLesson = module.lessons[currentLessonIndex + 1];
-        window.location.href = `/ml-course/${moduleId}/${nextLesson.id}`;
+        navigate(`/ml-course/${moduleId}/${nextLesson.id}`);
       } else {
         // Navigate back to course overview
-        window.location.href = `/ml-course`;
+        navigate(`/ml-course`);
       }
     }
   };
