@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Brain } from "lucide-react";
+import { MLTIcon } from "@/components/ui/ml-t-icon";
 
 const Index = () => {
   const fadeInVariants = {
