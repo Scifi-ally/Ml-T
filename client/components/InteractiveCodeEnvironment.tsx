@@ -554,17 +554,14 @@ Check the test results below for missing components.`;
                         ? 'text-green-300 placeholder-gray-500'
                         : 'text-gray-800 placeholder-gray-400'
                     }`}
-                    placeholder="import numpy as np
+                    placeholder="# Write your complete NumPy program here
+# Import library, create vectors, perform all operations
+# Demonstrate mastery of NumPy concepts
 
-# Fill in the missing code:
-person1 = np.array([___, ___, ___])
-person2 = np.array([___, ___, ___])
+# Your comprehensive implementation goes here...
+import numpy as np
 
-combined = ___ + ___
-print('Combined features:', combined)
-
-scaled = ___ * person1
-print('Scaled features:', scaled)"
+# Create your vectors and implement all required operations"
                     style={{
                       fontFamily:
                         'Fira Code, Monaco, Consolas, "Courier New", monospace',
