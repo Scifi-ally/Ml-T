@@ -104,7 +104,7 @@ const InteractiveCodeEnvironment: React.FC<InteractiveCodeEnvironmentProps> = ({
     }
 
     // Advanced validation for complete implementations
-    if (codeExample.id === "advanced-numpy-mastery") {
+    if (codeExample.id === "complete-numpy-implementation") {
       return validateAdvancedNumPyImplementation(code);
     }
 
@@ -813,7 +813,7 @@ Write your complete NumPy implementation and click 'Run Code' →`}
                           )}
                           {!test.passed && (
                             <p className="text-xs mt-1 opacity-75">
-                              🔍 This needs to be fixed. Check the hint below!
+                              ���� This needs to be fixed. Check the hint below!
                             </p>
                           )}
                         </div>
