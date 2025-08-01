@@ -1,0 +1,727 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 95%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 0 0% 95%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 0% 0%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 85%;
+    --input: 0 0% 95%;
+    --ring: 0 0% 0%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 5%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 5%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 0 0% 5%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 0% 100%;
+    --destructive-foreground: 0 0% 0%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 5%;
+    --ring: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family:
+      "Geist Mono", "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", monospace;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1,
+      "liga" 1;
+    font-variant-ligatures: contextual;
+  }
+
+  /* Remove transitions to eliminate scroll animation delays */
+  * {
+    transition: none !important;
+  }
+
+  /* Better scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Remove default focus outlines */
+  *:focus {
+    outline: none;
+  }
+
+  /* Custom focus styles for accessibility */
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px rgba(0, 0, 0, 0.1),
+      0 0 0 4px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+  }
+
+  /* Enhanced focus for buttons */
+  button:focus-visible {
+    transform: translateY(-1px);
+    box-shadow:
+      0 2px 8px rgba(0, 0, 0, 0.15),
+      0 0 0 2px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Tab navigation enhancement */
+  [data-state="active"]:focus-visible {
+    box-shadow:
+      0 0 0 2px rgba(0, 0, 0, 0.2),
+      inset 0 0 0 2px rgba(255, 255, 255, 0.8);
+  }
+}
+
+@layer components {
+  /* Page transition animations */
+  .page-enter {
+    animation: pageEnter 0.4s ease-out forwards;
+  }
+
+  .page-exit {
+    animation: pageExit 0.3s ease-in forwards;
+  }
+
+  @keyframes pageEnter {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes pageExit {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+  }
+
+  /* Fade in animation with stagger */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .fade-in-delayed {
+    animation: fadeIn 0.6s ease-out 0.1s both;
+  }
+
+  .fade-in-delayed-2 {
+    animation: fadeIn 0.6s ease-out 0.2s both;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Enhanced card hover effects */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Enhanced button animations */
+  .btn-hover {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-hover:active {
+    transform: translateY(0);
+  }
+
+  /* Smooth scale animation */
+  .scale-hover {
+    transition: transform 0.2s ease;
+  }
+
+  .scale-hover:hover {
+    transform: scale(1.05);
+  }
+
+  /* Slide in from bottom */
+  .slide-in-bottom {
+    animation: slideInBottom 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes slideInBottom {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Bounce entrance */
+  .bounce-in {
+    animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
+
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Typewriter effect */
+  .typewriter {
+    overflow: hidden;
+    border-right: 2px solid;
+    white-space: nowrap;
+    animation:
+      typing 3.5s steps(40, end),
+      blink-caret 0.75s step-end infinite;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink-caret {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: currentColor;
+    }
+  }
+
+  /* Magnetic hover effect */
+  .magnetic {
+    position: relative;
+    transition: transform 0.2s ease-out;
+  }
+
+  .magnetic:hover {
+    transform: scale(1.02);
+  }
+
+  /* Ripple effect */
+  .ripple {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ripple::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition:
+      width 0.6s,
+      height 0.6s;
+  }
+
+  .ripple:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Smooth focus rings */
+  .focus-ring {
+    @apply ring-2 ring-primary/20 ring-offset-2 ring-offset-background;
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Parallax scroll effect */
+  .parallax {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Smooth scrolling for the entire page */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  /* Hide scrollbar for Firefox */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  }
+
+  /* Interactive element improvements */
+  .interactive-element {
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .interactive-element:hover {
+    transform: translateY(-1px);
+  }
+
+  .interactive-element:active {
+    transform: translateY(0);
+    transition-duration: 0.1s;
+  }
+
+  /* Card interaction improvements */
+  .card-interactive {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .card-interactive:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .card-interactive:active {
+    transform: translateY(-1px);
+    transition-duration: 0.1s;
+  }
+
+  /* Button press feedback */
+  .btn-press {
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-press:active {
+    transform: scale(0.98);
+  }
+
+  /* Text selection improvements */
+  ::selection {
+    background: rgba(0, 0, 0, 0.1);
+    color: inherit;
+  }
+
+  /* Keyboard navigation indicator */
+  .keyboard-user button:focus,
+  .keyboard-user [role="button"]:focus,
+  .keyboard-user a:focus {
+    box-shadow:
+      0 0 0 2px rgba(0, 0, 0, 0.8),
+      0 0 0 4px rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    position: relative;
+  }
+
+  /* Advanced scroll animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 40px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translate3d(-40px, 0, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translate3d(40px, 0, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slideInFromBottom {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes floatingGlow {
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      transform: translateY(0px);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+    }
+  }
+
+  @keyframes morphBackground {
+    0%,
+    100% {
+      border-radius: 12px;
+    }
+    25% {
+      border-radius: 24px 12px;
+    }
+    50% {
+      border-radius: 12px 24px;
+    }
+    75% {
+      border-radius: 24px 12px 24px 12px;
+    }
+  }
+
+  @keyframes shimmerWave {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes pulseGlow {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+  }
+
+  @keyframes rotateHue {
+    from {
+      filter: hue-rotate(0deg);
+    }
+    to {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  @keyframes liquidMorph {
+    0%,
+    100% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    50% {
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+  }
+
+  /* Animation classes */
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-fadeInLeft {
+    animation: fadeInLeft 0.6s ease-out forwards;
+  }
+
+  .animate-fadeInRight {
+    animation: fadeInRight 0.6s ease-out forwards;
+  }
+
+  .animate-scaleIn {
+    animation: scaleIn 0.6s ease-out forwards;
+  }
+
+  .animate-slideInFromBottom {
+    animation: slideInFromBottom 0.8s ease-out forwards;
+  }
+
+  .animate-floatingGlow {
+    animation: floatingGlow 3s ease-in-out infinite;
+  }
+
+  .animate-morphBackground {
+    animation: morphBackground 8s ease-in-out infinite;
+  }
+
+  .animate-shimmerWave {
+    animation: shimmerWave 2s ease-in-out infinite;
+  }
+
+  .animate-pulseGlow {
+    animation: pulseGlow 2s infinite;
+  }
+
+  .animate-rotateHue {
+    animation: rotateHue 10s linear infinite;
+  }
+
+  .animate-liquidMorph {
+    animation: liquidMorph 6s ease-in-out infinite;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .hover-tilt {
+    transition: transform 0.3s ease;
+  }
+
+  .hover-tilt:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+  }
+
+  .hover-glow {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Perspective utility */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .perspective-2000 {
+    perspective: 2000px;
+  }
+
+  /* Transform utilities */
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  /* Scroll-triggered animations */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+
+  .scroll-animate.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered animations */
+  .stagger-children > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+
+  .stagger-children.animate > *:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  .stagger-children.animate > *:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  .stagger-children.animate > *:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+  .stagger-children.animate > *:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+  .stagger-children.animate > *:nth-child(5) {
+    transition-delay: 0.5s;
+  }
+  .stagger-children.animate > *:nth-child(6) {
+    transition-delay: 0.6s;
+  }
+
+  .stagger-children.animate > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Background patterns */
+  .bg-pattern-dots {
+    background-image: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 0.1) 1px,
+      transparent 1px
+    );
+    background-size: 20px 20px;
+  }
+
+  .bg-pattern-grid {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Liquid background */
+  .liquid-background {
+    background: linear-gradient(-45deg, #f8f9fa, #f1f3f4, #e8eaed, #f8f9fa);
+    background-size: 400% 400%;
+    animation: liquidFlow 15s ease infinite;
+  }
+
+  @keyframes liquidFlow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
