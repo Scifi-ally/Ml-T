@@ -265,7 +265,7 @@ const MLCourse = () => {
         </div>
 
         {/* Search and Filter Controls */}
-        <div className="mb-8 px-4">
+        <div className="mb-4 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-4 mb-6">
               <div className="relative flex-1">
