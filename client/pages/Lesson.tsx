@@ -587,18 +587,21 @@ const Lesson = () => {
 
             {/* Prerequisites */}
             {lesson.prerequisites.length > 0 && (
-              <div className="bg-white border border-gray-200 rounded-xl p-4">
-                <h3 className="font-semibold text-black mb-4">Prerequisites</h3>
-                <div className="space-y-2">
-                  {lesson.prerequisites.map((prereq, index) => (
+              <div className="bg-white border border-gray-200 rounded-lg p-3">
+                <h4 className="font-medium text-black mb-2 text-sm">Prerequisites</h4>
+                <div className="space-y-1">
+                  {lesson.prerequisites.slice(0, 2).map((prereq, index) => (
                     <div
                       key={index}
-                      className="flex items-center text-sm text-gray-600"
+                      className="flex items-start text-xs text-gray-600"
                     >
-                      <CheckCircle className="w-3 h-3 mr-2 text-green-500" />
-                      {prereq}
+                      <CheckCircle className="w-2 h-2 mr-1 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span className="leading-tight">{prereq}</span>
                     </div>
                   ))}
+                  {lesson.prerequisites.length > 2 && (
+                    <div className="text-xs text-gray-500">+{lesson.prerequisites.length - 2} more</div>
+                  )}
                 </div>
               </div>
             )}
