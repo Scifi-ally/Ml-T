@@ -163,6 +163,28 @@ class DataService {
             ],
             practiceExercises: 8,
             theoryDepth: "comprehensive",
+            theoreticalFoundations: {
+              keyTheorems: [
+                "Vector Space Axioms: 8 fundamental properties defining vector spaces",
+                "Linear Independence: Vectors are independent if no linear combination equals zero",
+                "Rank-Nullity Theorem: rank(A) + nullity(A) = number of columns",
+                "Singular Value Decomposition: A = UΣV^T for any matrix",
+                "Eigenvalue Decomposition: A = QΛQ^(-1) for diagonalizable matrices",
+                "Frobenius Norm: ||A||_F = sqrt(sum of squares of all elements)",
+                "Broadcasting Rules: How NumPy handles different shaped arrays",
+                "Matrix Condition Number: Ratio of largest to smallest singular value"
+              ],
+              realWorldConnections: [
+                "Netflix uses SVD on rating matrices for recommendations",
+                "Google PageRank uses eigenvectors of web link matrices",
+                "Image compression applies SVD to reduce file sizes",
+                "PCA uses eigendecomposition for dimensionality reduction",
+                "Linear regression in finance uses matrix operations",
+                "Computer graphics uses matrix transformations",
+                "Signal processing uses Fourier transforms with NumPy",
+                "Quantum computing simulations use complex vector spaces"
+              ]
+            },
             spacedRepetition: {
               nextReview: new Date(Date.now() + 24 * 60 * 60 * 1000), // Next day
               interval: 1,
