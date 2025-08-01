@@ -630,7 +630,7 @@ const Lesson = () => {
 
             {/* Theory Foundations */}
             {lesson.theoreticalFoundations && (
-              <div className="bg-white border border-gray-200 rounded-xl p-6">
+              <div className="bg-white border border-gray-200 rounded-xl p-4">
                 <h3 className="font-semibold text-black mb-4">Key Concepts</h3>
 
                 {lesson.theoreticalFoundations.keyTheorems && (
